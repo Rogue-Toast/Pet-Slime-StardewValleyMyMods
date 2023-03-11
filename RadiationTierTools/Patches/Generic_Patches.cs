@@ -8,7 +8,6 @@ using StardewValley;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley.TerrainFeatures;
 using Microsoft.Xna.Framework;
-using RanchingToolUpgrades;
 
 namespace RadiationTierTools.Patches
 {
@@ -86,7 +85,7 @@ namespace RadiationTierTools.Patches
             {
                 if (__instance.UpgradeLevel >= 5)
                 {
-                    string tier = "radioactive";
+                    string tier = __instance.UpgradeLevel == 5 ? "radioactive" : "mythicite";
                     string tool = "";
                     switch (__instance.BaseName)
                     {
@@ -97,6 +96,8 @@ namespace RadiationTierTools.Patches
                         case "Pail": tool = "pail"; break;
                         case "Milk Pail": tool = "milk_pail"; break;
                         case "Shears": tool = "shears"; break;
+                        case "Pan": tool = "pan"; break;
+                        case "Copper Pan": tool = "copper_pan"; break;
                     }
                     __result = I18n.GetByKey($"tool.{tool}.{tier}");
                     return false;
@@ -157,7 +158,7 @@ namespace RadiationTierTools.Patches
                 if (__instance.UpgradeLevel == 5)
                 {
                     __state = new ToolTextureState() { upgrade = __instance.UpgradeLevel, oldSpritesheet = Game1.toolSpriteSheet };
-                    ModEntry.Instance.Helper.Reflection.GetField<Texture2D>(typeof(Game1), "_toolSpriteSheet").SetValue(Assets.RadioactiveTools);
+                    ModEntry.Instance.Helper.Reflection.GetField<Texture2D>(typeof(Game1), "_toolSpriteSheet").SetValue(__instance.UpgradeLevel == 5 ? Assets.RadioactiveTools : Assets.MythiciteTools);
                     __instance.upgradeLevel.Value = 4;
                 }
             }
@@ -182,7 +183,7 @@ namespace RadiationTierTools.Patches
                 if (tool.UpgradeLevel == 5)
                 {
                     __state = new ToolTextureState() { upgrade = tool.UpgradeLevel, oldSpritesheet = Game1.toolSpriteSheet };
-                    ModEntry.Instance.Helper.Reflection.GetField<Texture2D>(typeof(Game1), "_toolSpriteSheet").SetValue(Assets.RadioactiveTools);
+                    ModEntry.Instance.Helper.Reflection.GetField<Texture2D>(typeof(Game1), "_toolSpriteSheet").SetValue(tool.UpgradeLevel == 5 ? Assets.RadioactiveTools : Assets.MythiciteTools);
                     tool.upgradeLevel.Value = 4;
                 }
             }
@@ -210,114 +211,6 @@ namespace RadiationTierTools.Patches
                 }
                 __result = false;
                 return false;
-            }
-        }
-
-        [HarmonyPatch("RanchingToolUpgrades.UpgradeableShears", "AddToShopStock")]
-        class RanchingTool_Shears_Upgrades
-        {
-            public static bool Prepare()
-            {
-                return ModEntry.Instance.Helper.ModRegistry.IsLoaded("drbirbdev.RanchingToolUpgrades");
-            }
-
-            public static bool Prefix(UpgradeableShears __instance, Dictionary<ISalable, int[]> itemPriceAndStock, Farmer who)
-            {
-                if (who == Game1.player && __instance.upgradeLevel != 5)
-                {
-                    int quantity = 1;
-                    int upgradeLevel = who.getToolFromName("Shears").UpgradeLevel + 1;
-                    if (who.getToolFromName("Shears") is not UpgradeableShears)
-                    {
-                        upgradeLevel = 1;
-                    }
-                    int upgradePrice = PriceForToolUpgradeLevel(upgradeLevel);
-                    int extraMaterialIndex = IndexOfExtraMaterialForToolUpgrade(upgradeLevel);
-                    itemPriceAndStock.Add(
-                        new UpgradeableShears(upgradeLevel: upgradeLevel),
-                        new int[] { upgradePrice, quantity, extraMaterialIndex, 5 });
-                }
-                return false;
-            }
-
-            private static int PriceForToolUpgradeLevel(int level)
-            {
-                return level switch
-                {
-                    1 => 2500,
-                    2 => 5000,
-                    3 => 10000,
-                    4 => 20000,
-                    5 => 40000,
-                    _ => 2000,
-                };
-            }
-
-            private static int IndexOfExtraMaterialForToolUpgrade(int level)
-            {
-                return level switch
-                {
-                    1 => 334,
-                    2 => 335,
-                    3 => 336,
-                    4 => 337,
-                    5 => 910,
-                    _ => 334,
-                };
-            }
-        }
-
-        [HarmonyPatch("RanchingToolUpgrades.UpgradeablePail", "AddToShopStock")]
-        class RanchingTool_Pail_Upgrades
-        {
-            public static bool Prepare()
-            {
-                return ModEntry.Instance.Helper.ModRegistry.IsLoaded("drbirbdev.RanchingToolUpgrades");
-            }
-
-            public static bool Prefix(UpgradeablePail __instance, Dictionary<ISalable, int[]> itemPriceAndStock, Farmer who)
-            {
-                if (who == Game1.player && __instance.upgradeLevel != 5)
-                {
-                    int quantity = 1;
-                    int upgradeLevel = who.getToolFromName("Pail").UpgradeLevel + 1;
-                    if (who.getToolFromName("Pail") is not UpgradeablePail)
-                    {
-                        upgradeLevel = 1;
-                    }
-                    int upgradePrice = PriceForToolUpgradeLevel(upgradeLevel);
-                    int extraMaterialIndex = IndexOfExtraMaterialForToolUpgrade(upgradeLevel);
-                    itemPriceAndStock.Add(
-                        new UpgradeablePail(upgradeLevel: upgradeLevel),
-                        new int[] { upgradePrice, quantity, extraMaterialIndex, 5 });
-                }
-                return false;
-            }
-
-            private static int PriceForToolUpgradeLevel(int level)
-            {
-                return level switch
-                {
-                    1 => 2500,
-                    2 => 5000,
-                    3 => 10000,
-                    4 => 20000,
-                    5 => 40000,
-                    _ => 2000,
-                };
-            }
-
-            private static int IndexOfExtraMaterialForToolUpgrade(int level)
-            {
-                return level switch
-                {
-                    1 => 334,
-                    2 => 335,
-                    3 => 336,
-                    4 => 337,
-                    5 => 910,
-                    _ => 334,
-                };
             }
         }
     }

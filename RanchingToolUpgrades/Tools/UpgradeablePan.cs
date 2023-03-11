@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 using MoonShared;
 using StardewValley.Objects;
 
-namespace PanningUpgrades
+namespace RanchingToolUpgrades
 {
     [XmlType("Mods_drbirbmd_upgradeablepan")] // SpaceCore serialisation signature
     public class UpgradeablePan : Pan
@@ -17,6 +17,7 @@ namespace PanningUpgrades
         public const int MaxUpgradeLevel = 4;
         private TemporaryAnimatedSprite tempSprite;
         private int ToolUseDirection = 0;
+        public new string Name = "Pan";
 
         public UpgradeablePan() : base()
         {
@@ -43,6 +44,8 @@ namespace PanningUpgrades
             return result;
         }
 
+        
+
         protected override string loadDisplayName()
         {
             return ModEntry.Instance.I18n.Get("tool.orepan.name").ToString();
@@ -51,6 +54,7 @@ namespace PanningUpgrades
         public static bool CanBeUpgraded()
         {
             Tool pan = Game1.player.getToolFromName("Pan");
+            int MaxUpgradeLevel = ModEntry.RadiationTier ? 6 : 4;
             return pan is not null && pan.UpgradeLevel != MaxUpgradeLevel;
         }
 
@@ -273,13 +277,9 @@ namespace PanningUpgrades
                 {
                     upgradeLevel = 2;
                 }
-                int upgradePrice = ModEntry.Instance.Helper.Reflection.GetMethod(
-                    typeof(Utility), "priceForToolUpgradeLevel")
-                    .Invoke<int>(upgradeLevel);
+                int upgradePrice = ModEntry.PriceForToolUpgradeLevel(upgradeLevel);
                 upgradePrice = (int)(upgradePrice * ModEntry.Config.UpgradeCostMultiplier);
-                int extraMaterialIndex = ModEntry.Instance.Helper.Reflection.GetMethod(
-                    typeof(Utility), "indexOfExtraMaterialForToolUpgrade")
-                    .Invoke<int>(upgradeLevel);
+                int extraMaterialIndex = ModEntry.IndexOfExtraMaterialForToolUpgrade(upgradeLevel);
                 int upgradeCostBars = ModEntry.Config.UpgradeCostBars;
                 itemPriceAndStock.Add(
                     new UpgradeablePan(upgradeLevel: upgradeLevel),
@@ -296,6 +296,8 @@ namespace PanningUpgrades
                 2 => new Hat(ModEntry.JsonAssets.GetHatId("Steel Pan")),
                 3 => new Hat(ModEntry.JsonAssets.GetHatId("Gold Pan")),
                 4 => new Hat(ModEntry.JsonAssets.GetHatId("Iridium Pan")),
+                5 => new Hat(ModEntry.JsonAssets.GetHatId("Radioactive Pan")),
+                6 => new Hat(ModEntry.JsonAssets.GetHatId("Mythicite Pan")),
                 _ => new Hat(ModEntry.JsonAssets.GetHatId("Pan")),
             };
         }

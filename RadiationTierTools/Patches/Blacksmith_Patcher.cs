@@ -40,7 +40,7 @@ namespace RadiationTierTools.Patches
             Tool toolFromName2 = who.getToolFromName("Watering Can");
             Tool toolFromName3 = who.getToolFromName("Pickaxe");
             Tool toolFromName4 = who.getToolFromName("Hoe");
-            if (toolFromName != null && (int)toolFromName.upgradeLevel < 5)
+            if (toolFromName != null && (int)toolFromName.upgradeLevel < 6)
             {
                 Tool tool = new Axe();
                 tool.UpgradeLevel = (int)toolFromName.upgradeLevel + 1;
@@ -52,7 +52,7 @@ namespace RadiationTierTools.Patches
                 });
             }
 
-            if (toolFromName2 != null && (int)toolFromName2.upgradeLevel < 5)
+            if (toolFromName2 != null && (int)toolFromName2.upgradeLevel < 6)
             {
                 Tool tool2 = new WateringCan();
                 tool2.UpgradeLevel = (int)toolFromName2.upgradeLevel + 1;
@@ -64,7 +64,7 @@ namespace RadiationTierTools.Patches
                 });
             }
 
-            if (toolFromName3 != null && (int)toolFromName3.upgradeLevel < 5)
+            if (toolFromName3 != null && (int)toolFromName3.upgradeLevel < 6)
             {
                 Tool tool3 = new Pickaxe();
                 tool3.UpgradeLevel = (int)toolFromName3.upgradeLevel + 1;
@@ -76,7 +76,7 @@ namespace RadiationTierTools.Patches
                 });
             }
 
-            if (toolFromName4 != null && (int)toolFromName4.upgradeLevel < 5)
+            if (toolFromName4 != null && (int)toolFromName4.upgradeLevel < 6)
             {
                 Tool tool4 = new Hoe();
                 tool4.UpgradeLevel = (int)toolFromName4.upgradeLevel + 1;
@@ -130,6 +130,7 @@ namespace RadiationTierTools.Patches
                 3 => 10000,
                 4 => 20000,
                 5 => 40000,
+                6 => 80000,
                 _ => 2000,
             };
         }
@@ -143,6 +144,7 @@ namespace RadiationTierTools.Patches
                 3 => 336,
                 4 => 337,
                 5 => 910,
+                6 => 852,
                 _ => 334,
             };
         }

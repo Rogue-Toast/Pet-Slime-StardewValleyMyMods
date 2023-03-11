@@ -13,6 +13,7 @@ namespace RanchingToolUpgrades
     public class UpgradeablePail : MilkPail
     {
         public const int MaxUpgradeLevel = 4;
+        public new string Name = "Pail";
 
         public UpgradeablePail() : base()
         {
@@ -40,6 +41,7 @@ namespace RanchingToolUpgrades
         public static bool CanBeUpgraded()
         {
             Tool pail = Game1.player.getToolFromName("Pail");
+            int MaxUpgradeLevel = ModEntry.RadiationTier ? 6 : 4;
             return pail is not null && pail.UpgradeLevel != MaxUpgradeLevel;
         }
 
@@ -59,7 +61,7 @@ namespace RanchingToolUpgrades
 
         public static Rectangle IconSourceRectangle(int upgradeLevel)
         {
-            Rectangle source = new(0, 0, 16, 16);
+            Rectangle source = new(80, 0, 16, 16);
             source.Y += upgradeLevel * source.Height;
             return source;
         }
@@ -102,13 +104,9 @@ namespace RanchingToolUpgrades
                 {
                     upgradeLevel = 1;
                 }
-                int upgradePrice = ModEntry.Instance.Helper.Reflection.GetMethod(
-                    typeof(Utility), "priceForToolUpgradeLevel")
-                    .Invoke<int>(upgradeLevel);
+                int upgradePrice = ModEntry.PriceForToolUpgradeLevel(upgradeLevel); 
                 upgradePrice = (int)(upgradePrice * ModEntry.Config.PailUpgradeCostMultiplier);
-                int extraMaterialIndex = ModEntry.Instance.Helper.Reflection.GetMethod(
-                    typeof(Utility), "indexOfExtraMaterialForToolUpgrade")
-                    .Invoke<int>(upgradeLevel);
+                int extraMaterialIndex = ModEntry.IndexOfExtraMaterialForToolUpgrade(upgradeLevel);
                 itemPriceAndStock.Add(
                     new UpgradeablePail(upgradeLevel: upgradeLevel),
                     new int[] { upgradePrice, quantity, extraMaterialIndex, ModEntry.Config.PailUpgradeCostBars });

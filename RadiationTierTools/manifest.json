@@ -16,9 +16,6 @@
         {
             "UniqueID": "spacechase0.JsonAssets"
         },
- //       {
- //           "UniqueID": "drbirbdev.RanchingToolUpgrades"
- //       },
         {
             "UniqueID": "spacechase0.GenericModConfigMenu",
             "IsRequired": false

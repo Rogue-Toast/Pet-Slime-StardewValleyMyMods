@@ -57,47 +57,5 @@ namespace RadiationTierTools
                 return;
             }
         }
-
- ///       private void OnMenuChanged(object sender, MenuChangedEventArgs e)
- ///       {
- ///           if (e.NewMenu is ShopMenu shop)
- ///           {
- ///               string clintUpgradeDialogue = Game1.parseText(Game1.content.LoadString("Strings\\StringsFromCSFiles:ShopMenu.cs.11474"), Game1.dialogueFont, 304);
- ///               if (shop.potraitPersonDialogue != clintUpgradeDialogue)
- ///                   return;
- ///
- ///               Tool orig = Game1.player.getToolFromName("Axe");
- ///               if (orig != null && (orig.UpgradeLevel == 4))
- ///               {
- ///                   Tool tool = new Axe() { UpgradeLevel = orig.UpgradeLevel + 1 };
- ///                   shop.forSale.Add(tool);
- ///                   shop.itemPriceAndStock.Add(tool, new[] { 100000 , 1, 910, 5 });
- ///               }
- ///
- ///               orig = Game1.player.getToolFromName("Watering Can");
- ///               if (orig != null && (orig.UpgradeLevel == 4))
- ///               {
- ///                   Tool tool = new WateringCan() { UpgradeLevel = orig.UpgradeLevel + 1 };
- ///                   shop.forSale.Add(tool);
- ///                   shop.itemPriceAndStock.Add(tool, new[] { 100000, 1, 910, 5 });
- ///               }
- ///
- ///               orig = Game1.player.getToolFromName("Pickaxe");
- ///               if (orig != null && (orig.UpgradeLevel == 4))
- ///               {
- ///                   Tool tool = new Pickaxe() { UpgradeLevel = orig.UpgradeLevel + 1 };
- ///                   shop.forSale.Add(tool);
- ///                   shop.itemPriceAndStock.Add(tool, new[] { 100000, 1, 910, 5 });
- ///               }
- ///
- ///               orig = Game1.player.getToolFromName("Hoe");
- ///               if (orig != null && (orig.UpgradeLevel == 4))
- ///               {
- ///                   Tool tool = new Hoe() { UpgradeLevel = orig.UpgradeLevel + 1 };
- ///                   shop.forSale.Add(tool);
- ///                   shop.itemPriceAndStock.Add(tool, new[] { 100000, 1, 910, 5 });
- ///               }
- ///           }
- ///       }
     }
 }

@@ -43,6 +43,7 @@ namespace RanchingToolUpgrades
         public static bool CanBeUpgraded()
         {
             Tool shears = Game1.player.getToolFromName("Shears");
+            int MaxUpgradeLevel = ModEntry.RadiationTier ? 6 : 4;
             return shears is not null && shears.UpgradeLevel != MaxUpgradeLevel;
         }
 
@@ -62,7 +63,7 @@ namespace RanchingToolUpgrades
 
         public static Rectangle IconSourceRectangle(int upgradeLevel)
         {
-            Rectangle source = new(16, 0, 16, 16);
+            Rectangle source = new(96, 0, 16, 16);
             source.Y += upgradeLevel * source.Height;
             return source;
         }
@@ -106,13 +107,9 @@ namespace RanchingToolUpgrades
                 {
                     upgradeLevel = 1;
                 }
-                int upgradePrice = ModEntry.Instance.Helper.Reflection.GetMethod(
-                    typeof(Utility), "priceForToolUpgradeLevel")
-                    .Invoke<int>(upgradeLevel);
+                int upgradePrice = ModEntry.PriceForToolUpgradeLevel(upgradeLevel);
                 upgradePrice = (int)(upgradePrice * ModEntry.Config.ShearsUpgradeCostMultiplier);
-                int extraMaterialIndex = ModEntry.Instance.Helper.Reflection.GetMethod(
-                    typeof(Utility), "indexOfExtraMaterialForToolUpgrade")
-                    .Invoke<int>(upgradeLevel);
+                int extraMaterialIndex = ModEntry.IndexOfExtraMaterialForToolUpgrade(upgradeLevel);
                 itemPriceAndStock.Add(
                     new UpgradeableShears(upgradeLevel: upgradeLevel),
                     new int[] { upgradePrice, quantity, extraMaterialIndex, ModEntry.Config.ShearsUpgradeCostBars });

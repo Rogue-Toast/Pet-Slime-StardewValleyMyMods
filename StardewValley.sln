@@ -22,11 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookingSkill", "CookingSkil
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcavationSkill", "ExcavationSkill\ExcavationSkill.csproj", "{56651B71-984E-463C-BD0C-027917E96089}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PanningUpgrades", "PanningUpgrades\PanningUpgrades.csproj", "{7CD1D044-58C5-49C3-B637-2FE0D552D2FB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadiationTierTools", "RadiationTierTools\RadiationTierTools.csproj", "{762BD712-DE1C-435E-A0B1-CDE91BD6823B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RanchingToolUpgrades", "RanchingToolUpgrades\RanchingToolUpgrades.csproj", "{2166E08B-E4C2-41AD-B582-B20A7C479514}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RanchingToolUpgrades", "RanchingToolUpgrades\RanchingToolUpgrades.csproj", "{574D101F-E561-46B4-95B2-2C8796CA4755}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,18 +40,14 @@ Global
 		{56651B71-984E-463C-BD0C-027917E96089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56651B71-984E-463C-BD0C-027917E96089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56651B71-984E-463C-BD0C-027917E96089}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7CD1D044-58C5-49C3-B637-2FE0D552D2FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CD1D044-58C5-49C3-B637-2FE0D552D2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CD1D044-58C5-49C3-B637-2FE0D552D2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CD1D044-58C5-49C3-B637-2FE0D552D2FB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{762BD712-DE1C-435E-A0B1-CDE91BD6823B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{762BD712-DE1C-435E-A0B1-CDE91BD6823B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{762BD712-DE1C-435E-A0B1-CDE91BD6823B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{762BD712-DE1C-435E-A0B1-CDE91BD6823B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2166E08B-E4C2-41AD-B582-B20A7C479514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2166E08B-E4C2-41AD-B582-B20A7C479514}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2166E08B-E4C2-41AD-B582-B20A7C479514}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2166E08B-E4C2-41AD-B582-B20A7C479514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{574D101F-E561-46B4-95B2-2C8796CA4755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574D101F-E561-46B4-95B2-2C8796CA4755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{574D101F-E561-46B4-95B2-2C8796CA4755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{574D101F-E561-46B4-95B2-2C8796CA4755}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

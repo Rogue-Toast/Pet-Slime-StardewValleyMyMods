@@ -51,6 +51,9 @@ namespace RadiationTierTools.Patches
                 case 5:
                     ResultToReplace = 40000;
                     break;
+                case 6:
+                    ResultToReplace = 80000;
+                    break;
                 default:
                     ResultToReplace = 2500;
                     break;
