@@ -18,10 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{7BB5EFE4
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MoonSharedSpaceCore", "MoonSharedSpaceCore\MoonSharedSpaceCore.shproj", "{19CEDB88-A912-48DA-B35D-FCE2509E70E6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookingSkill", "CookingSkillRedux\CookingSkill.csproj", "{4E857749-D397-416F-BAB4-4176CD2A708B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadiationTierTools", "RadiationTierTools\RadiationTierTools.csproj", "{C24DB0CB-3F4B-4946-A87A-F4354F8D5871}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RanchingToolUpgrades", "RanchingToolUpgrades\RanchingToolUpgrades.csproj", "{D2E997B9-1B1D-4BEB-82E1-5F35ACE4D77C}"
 EndProject
 Global
@@ -34,13 +30,6 @@ Global
 		{8F13906D-7E88-45B4-ABBC-617437970163}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19CEDB88-A912-48DA-B35D-FCE2509E70E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19CEDB88-A912-48DA-B35D-FCE2509E70E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E857749-D397-416F-BAB4-4176CD2A708B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E857749-D397-416F-BAB4-4176CD2A708B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E857749-D397-416F-BAB4-4176CD2A708B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{C24DB0CB-3F4B-4946-A87A-F4354F8D5871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C24DB0CB-3F4B-4946-A87A-F4354F8D5871}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C24DB0CB-3F4B-4946-A87A-F4354F8D5871}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{C24DB0CB-3F4B-4946-A87A-F4354F8D5871}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{D2E997B9-1B1D-4BEB-82E1-5F35ACE4D77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D2E997B9-1B1D-4BEB-82E1-5F35ACE4D77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2E997B9-1B1D-4BEB-82E1-5F35ACE4D77C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
