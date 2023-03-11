@@ -6,7 +6,7 @@
     <SharedGUID>8f13906d-7e88-45b4-abbc-617437970163</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>BirbShared</Import_RootNamespace>
+    <Import_RootNamespace>MoonShared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)APIs\IDynamicGameAssets.cs" />
