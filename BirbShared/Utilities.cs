@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using BirbShared.APIs;
+using MoonShared.APIs;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Objects;
 using StardewValley.Tools;
 
-namespace BirbShared
+namespace MoonShared
 {
     internal class Utilities
     {

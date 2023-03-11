@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using BirbShared.APIs;
-using BirbShared;
-using BirbShared.Config;
-using BirbShared.Command;
-using BirbShared.Asset;
+using MoonShared.APIs;
+using MoonShared;
+using MoonShared.Config;
+using MoonShared.Command;
+using MoonShared.Asset;
 using HarmonyLib;
 using System.IO;
 

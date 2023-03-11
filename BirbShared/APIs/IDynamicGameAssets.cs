@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 
-namespace BirbShared.APIs
+namespace MoonShared.APIs
 {
     public interface IDynamicGameAssetsApi
     {

@@ -1,4 +1,4 @@
-using BirbShared.Asset;
+using MoonShared.Asset;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI.Events;
 

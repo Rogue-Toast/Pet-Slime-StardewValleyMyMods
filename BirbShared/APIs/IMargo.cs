@@ -1,4 +1,4 @@
-namespace BirbShared.APIs
+namespace MoonShared.APIs
 {
     public interface IMargo
     {

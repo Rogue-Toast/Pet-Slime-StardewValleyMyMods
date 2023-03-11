@@ -1,7 +1,7 @@
 using SpaceCore;
 using StardewValley;
 
-namespace BirbShared
+namespace MoonShared
 {
     static class FarmerExtensions
     {

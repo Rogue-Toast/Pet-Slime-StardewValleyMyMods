@@ -1,14 +1,18 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StardewModdingAPI;
 using StardewValley;
 using System;
 using System.Collections.Generic;
 
-namespace BirbShared.APIs
+namespace MoonShared.APIs
 {
     public interface IJsonAssetsApi
     {
         void LoadAssets(string path);
+
+        void LoadAssets(string path, ITranslationHelper translations);
+
         int GetObjectId(string name);
         // int GetCropId(string name);
         // int GetFruitTreeId(string name);

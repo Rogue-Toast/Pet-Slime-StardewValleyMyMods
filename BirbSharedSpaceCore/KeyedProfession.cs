@@ -5,7 +5,7 @@ using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 
-namespace BirbShared
+namespace MoonShared
 {
     internal class KeyedProfession : Skills.Skill.Profession
     {

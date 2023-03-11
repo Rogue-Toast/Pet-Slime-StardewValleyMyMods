@@ -14,9 +14,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)APIs\IJsonAssets.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\ILeaderboard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\IMargo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APIs\IProducerFrameworkAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\ISpaceCore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Asset\AssetClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Asset\AssetClassParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Patching\BasePatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Patching\HarmonyPatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Patching\IPatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Patching\PatchHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TypeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\CommandClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\CommandClassParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\ConfigClass.cs" />

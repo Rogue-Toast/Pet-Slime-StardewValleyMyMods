@@ -5,7 +5,7 @@ using StardewValley.Tools;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using BirbShared;
+using MoonShared;
 using StardewValley.Objects;
 
 namespace PanningUpgrades

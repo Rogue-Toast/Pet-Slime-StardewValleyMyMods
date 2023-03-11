@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 using StardewModdingAPI;
 
-namespace BirbShared.Command
+namespace MoonShared.Command
 {
     internal class CommandClassParser
     {

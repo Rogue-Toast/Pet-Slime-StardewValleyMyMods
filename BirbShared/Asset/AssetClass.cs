@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using StardewModdingAPI.Events;
 
-namespace BirbShared.Asset
+namespace MoonShared.Asset
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     internal class AssetClass : Attribute

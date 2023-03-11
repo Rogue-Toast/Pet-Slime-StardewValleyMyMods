@@ -3,7 +3,7 @@
 
     <!--common project properties-->
     <PropertyGroup>
-        <Authors>drbirbdev</Authors>
+        <Authors>moonslime</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
         <LangVersion>latest</LangVersion>

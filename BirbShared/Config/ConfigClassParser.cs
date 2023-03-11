@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using BirbShared.APIs;
+using MoonShared.APIs;
 using StardewModdingAPI;
 using StardewModdingAPI.Utilities;
 
-namespace BirbShared.Config
+namespace MoonShared.Config
 {
     internal class ConfigClassParser
     {

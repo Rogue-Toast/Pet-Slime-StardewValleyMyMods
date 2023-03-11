@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace BirbShared.Config
+namespace MoonShared.Config
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class ConfigClass : Attribute

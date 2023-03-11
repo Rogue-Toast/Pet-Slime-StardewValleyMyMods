@@ -5,7 +5,7 @@ using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
 
-namespace BirbShared.Asset
+namespace MoonShared.Asset
 {
 
     public class AssetClassParser

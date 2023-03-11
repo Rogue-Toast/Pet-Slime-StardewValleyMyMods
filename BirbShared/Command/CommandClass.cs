@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BirbShared.Command
+namespace MoonShared.Command
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class CommandClass : Attribute
     {
         public string Name = "";
-        public string Prefix = "birb_";
+        public string Prefix = "ms_";
     }
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]

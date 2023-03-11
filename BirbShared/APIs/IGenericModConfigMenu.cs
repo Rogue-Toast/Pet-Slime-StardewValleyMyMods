@@ -5,7 +5,7 @@ using StardewModdingAPI.Utilities;
 using StardewValley;
 using System;
 
-namespace BirbShared.APIs
+namespace MoonShared.APIs
 {
     public interface IGenericModConfigMenuApi
     {

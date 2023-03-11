@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BirbShared.APIs
+namespace MoonShared.APIs
 {
     public interface ILeaderboard
     {

@@ -2,7 +2,7 @@ using StardewValley;
 using System;
 using System.Reflection;
 
-namespace BirbShared.APIs
+namespace MoonShared.APIs
 {
     public interface ISpaceCore
     {

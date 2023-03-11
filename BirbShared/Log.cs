@@ -1,6 +1,7 @@
+using System.Diagnostics;
 using StardewModdingAPI;
 
-namespace BirbShared
+namespace MoonShared
 {
 	internal class Log
 	{
@@ -10,7 +11,23 @@ namespace BirbShared
         {
             Monitor = monitor;
         }
-		public static void Debug(string str, bool isDebug = true)
+
+        [DebuggerHidden]
+        [Conditional("DEBUG")]
+        public static void DebugOnlyLog(string str)
+        {
+            Log.Monitor.Log(str, LogLevel.Debug);
+        }
+
+        [DebuggerHidden]
+        [Conditional("DEBUG")]
+        public static void DebugOnlyLog(string str, bool pred)
+        {
+            if (pred)
+                Log.Monitor.Log(str, LogLevel.Debug);
+        }
+
+        public static void Debug(string str, bool isDebug = true)
 		{
 			Monitor.Log(str,
 				isDebug ? LogLevel.Debug : LogLevel.Trace);

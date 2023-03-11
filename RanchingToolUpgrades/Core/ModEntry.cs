@@ -1,10 +1,10 @@
-using BirbShared;
-using BirbShared.Config;
-using BirbShared.Command;
+using MoonShared;
+using MoonShared.Config;
+using MoonShared.Command;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using BirbShared.Asset;
-using BirbShared.APIs;
+using MoonShared.Asset;
+using MoonShared.APIs;
 using HarmonyLib;
 
 namespace RanchingToolUpgrades
