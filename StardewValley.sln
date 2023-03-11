@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcavationSkill", "ExcavationSkill\ExcavationSkill.csproj", "{80C3C0C2-F6B1-4F42-93C2-78D72C435978}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PanningUpgrades", "PanningUpgrades\PanningUpgrades.csproj", "{6B0AA4ED-834C-4AF1-A64B-0EFC01A02A61}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MoonShared", "MoonShared\MoonShared.shproj", "{8F13906D-7E88-45B4-ABBC-617437970163}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{7BB5EFE4-05AA-48E1-BA1C-5F7F0599381E}"
@@ -34,12 +30,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{80C3C0C2-F6B1-4F42-93C2-78D72C435978}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{80C3C0C2-F6B1-4F42-93C2-78D72C435978}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{80C3C0C2-F6B1-4F42-93C2-78D72C435978}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B0AA4ED-834C-4AF1-A64B-0EFC01A02A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B0AA4ED-834C-4AF1-A64B-0EFC01A02A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B0AA4ED-834C-4AF1-A64B-0EFC01A02A61}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F13906D-7E88-45B4-ABBC-617437970163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F13906D-7E88-45B4-ABBC-617437970163}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19CEDB88-A912-48DA-B35D-FCE2509E70E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
