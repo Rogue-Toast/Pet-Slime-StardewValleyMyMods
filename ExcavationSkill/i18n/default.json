@@ -30,8 +30,12 @@
     "excavation10b1.prestige.description": "While panning, be able to find a lot more additional items.",
     "excavation10b2.prestige.description": "On Successful Panning or Digging an artifact spot, \n Get a speed boost for two minutes.",
 
-    "moonslime.excavation.test.name": "Does this exist?",
-    "moonslime.excavation.test.description": "Does this exist?",
+    "DO.NOT.CHANGE.THE.BASE.NAME.WHEN.TRANSLATING": null,
+    "moonslime.excavation.watershifter.BaseName": "Shifter",
+    "DO.NOT.CHANGE.THE.BASE.NAME.WHEN.TRANSLATING.": null,
+
+    "moonslime.excavation.watershifter.name": "Water Shifter",
+    "moonslime.excavation.watershifter.description": "Place it in the water, string it with fiber, \nand check the next day to see it has anything. \nWorks in streams, lakes, and the ocean.",
 
 
     "moonslime.excavation.h_display.name": "Hardwood Display",

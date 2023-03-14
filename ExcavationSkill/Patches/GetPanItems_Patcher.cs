@@ -52,12 +52,12 @@ namespace ExcavationSkill
             Utilities.ApplyExcavationSkill(Game1.getFarmer(who.UniqueMultiplayerID));
 
             //Add Artifacts to the drop list chance if they have the Trowler Profession
-            if (Game1.player.HasCustomProfession(ExcavationSkill.Excavation5b))
+            if (Game1.player.HasCustomProfession(Excavation_Skill.Excavation5b))
             {
 
                 Random random = new Random(who.getTileX() * 2000 + who.getTileY() + (int)Game1.uniqueIDForThisGame / 2 + (int)Game1.stats.DaysPlayed);
 
-                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(ExcavationSkill.Excavation5b))
+                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(Excavation_Skill.Excavation5b))
                 {
                     
                     int item_1 = ModEntry.ArtifactLootTable[random.Next(ModEntry.ArtifactLootTable.Count)];
@@ -81,12 +81,12 @@ namespace ExcavationSkill
             }
 
             //Add extra loot to the list if they have the Dowser profession
-            if (Game1.player.HasCustomProfession(ExcavationSkill.Excavation10b1))
+            if (Game1.player.HasCustomProfession(Excavation_Skill.Excavation10b1))
             {
                 Random random = new Random(who.getTileX() * (int)who.DailyLuck * 2000 + who.getTileY() + (int)Game1.uniqueIDForThisGame / 2 + (int)Game1.stats.DaysPlayed);
                 int xLocation = who.getTileX();
                 int yLocation = who.getTileY();
-                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(ExcavationSkill.Excavation10b1))
+                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(Excavation_Skill.Excavation10b1))
                 {
                     for (int i = 0; i < 1; i++)
                     {

@@ -80,5 +80,24 @@ namespace MoonShared
                 ? value
                 : defaultValue;
         }
+
+
+
+        /// <summary>Shuffle a List for a random value.</summary>
+        /// <typeparam name="T">The value type.</typeparam>
+        /// <param name="list">The list to be shuffled.</param>
+        /// <param name="random">The RNG to shuffle off of.</param>
+        public static void Shuffle<T>(this IList<T> list, Random random)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
     }
 }

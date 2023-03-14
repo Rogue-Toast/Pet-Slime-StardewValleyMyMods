@@ -51,13 +51,12 @@ namespace ExcavationSkill
         internal ITranslationHelper I18n => this.Helper.Translation;
         internal static Dictionary<string, List<string>> ItemDefinitions;
         internal static IEnumerable<KeyValuePair<string, List<string>>> ExcavationSkillLevelUpTable;
-        internal static Dictionary<Vector2, int> crabPotOverlayTiles = new Dictionary<Vector2, int>();
         public static readonly IList<int> BonusLootTable = new List<int>();
         public static readonly IList<int> ArtifactLootTable = new List<int>();
+        public static readonly IList<int> ShifterLootTable = new List<int>();
         internal const string ObjectPrefix = "moonslime.excavation."; // DO NOT EDIT
 
         
-
         public override void Entry(IModHelper helper)
         {
             Instance = this;
@@ -110,7 +109,7 @@ namespace ExcavationSkill
 
                     // Register excavation skill after checking if MARGO is loaded.
                     Log.Trace("Testing to see if I see this");
-                    SpaceCore.Skills.RegisterSkill(new ExcavationSkill());
+                    SpaceCore.Skills.RegisterSkill(new Excavation_Skill());
 
                     // Load the loot table with Item IDs
                     // Read starting recipes from general data file
@@ -121,6 +120,10 @@ namespace ExcavationSkill
                     foreach (string entry in ModEntry.ItemDefinitions["artifact_loot_table"])
                     {
                         ArtifactLootTable.Add(int.Parse(entry));
+                    }
+                    foreach (string entry in ModEntry.ItemDefinitions["shifter_loot_table"])
+                    {
+                        ShifterLootTable.Add(int.Parse(entry));
                     }
 
 
@@ -177,6 +180,8 @@ namespace ExcavationSkill
             {
                 Log.Error($"{this.ModManifest.Name} failed to load completely. Mod may not be usable.");
             }
+
+
         }
 
         private bool Init()
@@ -243,6 +248,7 @@ namespace ExcavationSkill
                 ProducerFramework.AddContentPack(directory: Path.Combine(Helper.DirectoryPath, Assets.PFWPackPath));
             }
 
+            
         }
 
         private static void SetCraftingField(CraftingRecipe craftingRecipe, string fieldName, object value)
@@ -291,9 +297,9 @@ namespace ExcavationSkill
 
         public void DayStarted(object sender, DayStartedEventArgs e)
         {
-            if (Game1.player.HasCustomProfession(ExcavationSkill.Excavation5a))
+            if (Game1.player.HasCustomProfession(Excavation_Skill.Excavation5a))
             {
-                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(ExcavationSkill.Excavation5a))
+                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(Excavation_Skill.Excavation5a))
                 {
                     Log.Trace("Excavation skill: Pioneer Priestige extra artifact spots fired");
                     SpawnDiggingSpots(4);

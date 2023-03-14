@@ -17,7 +17,7 @@ namespace ExcavationSkill
         {
 
             // Add any missing starting recipes
-            foreach (string recipe in ExcavationSkill.StartingRecipes)
+            foreach (string recipe in Excavation_Skill.StartingRecipes)
             {
                 if (!Game1.player.craftingRecipes.ContainsKey(recipe))
                 {
@@ -28,7 +28,7 @@ namespace ExcavationSkill
         
             // Add any missing recipes from the level-up recipe table
             int level = GetLevel();
-            IReadOnlyDictionary<int, IList<string>> recipes = (IReadOnlyDictionary<int, IList<string>>)ExcavationSkill.ExcavationSkillLevelUpRecipes;
+            IReadOnlyDictionary<int, IList<string>> recipes = (IReadOnlyDictionary<int, IList<string>>)Excavation_Skill.ExcavationSkillLevelUpRecipes;
             IEnumerable<string> missingRecipes = recipes
                 // Take all recipe lists up to the current level
                 .TakeWhile(pair => pair.Key < level)
@@ -91,7 +91,7 @@ namespace ExcavationSkill
                 return false;
 
             //Check to see if the player has the excavation skill. If not, return false.
-            if (!player.HasCustomProfession(ExcavationSkill.Excavation10b2))
+            if (!player.HasCustomProfession(Excavation_Skill.Excavation10b2))
                 return false;
 
             //Check to see if the player already has the haste buff. if so, don't refresh it and return false.
@@ -102,7 +102,7 @@ namespace ExcavationSkill
             }
 
             //Get the level (aka the length) of the speed boost. 1 if they don't have the prestige version 2 if they do.
-            int level = ModEntry.MargoLoaded && player.HasCustomPrestigeProfession(ExcavationSkill.Excavation10b2) ? 2 : 1;
+            int level = ModEntry.MargoLoaded && player.HasCustomPrestigeProfession(Excavation_Skill.Excavation10b2) ? 2 : 1;
 
             //Apply the buff make sure we have it have a custon name.
             Game1.buffsDisplay.addOtherBuff(new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, level * 60, "excavation:profession:haste", "Gold Rush!"));
@@ -145,7 +145,7 @@ namespace ExcavationSkill
         public static IReadOnlyList<string> GetExcavationRecipesForLevel(int level)
         {
             // Level undefined
-            if (!ExcavationSkill.ExcavationSkillLevelUpRecipes.ContainsKey(level))
+            if (!Excavation_Skill.ExcavationSkillLevelUpRecipes.ContainsKey(level))
             {
                 return new List<string>();
             }
@@ -154,7 +154,7 @@ namespace ExcavationSkill
             {
                 return new List<string>();
             }
-            return (IReadOnlyList<string>)ExcavationSkill.ExcavationSkillLevelUpRecipes[level];
+            return (IReadOnlyList<string>)Excavation_Skill.ExcavationSkillLevelUpRecipes[level];
         }
     }
 }

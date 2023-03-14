@@ -8,7 +8,7 @@ using StardewValley;
 
 namespace ExcavationSkill
 {
-    internal class ExcavationSkill : SpaceCore.Skills.Skill
+    internal class Excavation_Skill : SpaceCore.Skills.Skill
     {
         public static KeyedProfession Excavation5a;
         public static KeyedProfession Excavation5b;
@@ -19,7 +19,7 @@ namespace ExcavationSkill
         public static readonly IList<string> StartingRecipes = new List<string>();
         public static readonly IDictionary<int, IList<string>> ExcavationSkillLevelUpRecipes = new Dictionary<int, IList<string>>();
 
-        public ExcavationSkill() : base("moonslime.Excavation")
+        public Excavation_Skill() : base("moonslime.Excavation")
         {
             this.Icon = ModEntry.Assets.IconA;
             this.SkillsPageIcon = ModEntry.Config.AlternativeSkillPageIcon ? ModEntry.Assets.IconBalt : ModEntry.Assets.IconB;

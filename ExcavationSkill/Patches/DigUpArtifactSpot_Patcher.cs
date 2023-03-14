@@ -45,11 +45,11 @@ namespace ExcavationSkill
         GameLocation __instance, int xLocation, int yLocation, Farmer who)
         {
             //Does The player have the Antiquarian Profession?
-            if (Game1.player.HasCustomProfession(ExcavationSkill.Excavation10a1))
+            if (Game1.player.HasCustomProfession(Excavation_Skill.Excavation10a1))
             {
                 Log.Trace("Excavation skill: Player has Antiquarian");
                 Random random = new Random(who.getTileX() * (int)who.DailyLuck * 2000 + who.getTileY() + (int)Game1.uniqueIDForThisGame / 2 + (int)Game1.stats.DaysPlayed);
-                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(ExcavationSkill.Excavation10a1))
+                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(Excavation_Skill.Excavation10a1))
                 {
                     for (int i = 0; i < 2; i++)
                     {

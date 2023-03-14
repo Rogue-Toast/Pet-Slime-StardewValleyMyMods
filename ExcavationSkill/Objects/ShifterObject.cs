@@ -12,14 +12,16 @@ using StardewValley.Objects;
 using SOBject = StardewValley.Object;
 using StardewValley.Locations;
 using MoonShared;
+using SpaceCore;
+using System.Reflection;
 
 namespace ExcavationSkill.Objects
 {
-
+    //This code is a mess from trying to just copy the vanilla Crab pot code... but hey it works
     [XmlType("Mods_moonslime_ExcavationSkill_ShifterObject")]
     public class ShifterObject : SOBject
     {
-        public const int LidFlapTimerInterval = 120;
+        public const int LidFlapTimerInterval = 60;
 
         private float YBob;
 
@@ -28,6 +30,9 @@ namespace ExcavationSkill.Objects
 
         [XmlElement("Bait")]
         public readonly NetRef<SOBject> Bait = new NetRef<SOBject>();
+
+        [XmlElement("isHoedirt")]
+        public new readonly NetBool isHoedirt = new NetBool(value: false);
 
         public int TileIndexToShow;
 
@@ -41,12 +46,30 @@ namespace ExcavationSkill.Objects
 
         private Vector2 Shake;
 
+
         public ShifterObject()
         {
+
+        }
+
+        public ShifterObject(string arg)
+        {
+            TileLocation = Vector2.Zero;
+            ParentSheetIndex = 1;
+            name = ModEntry.Instance.I18n.Get("moonslime.excavation.watershifter.name");
+            CanBeSetDown = true;
+            CanBeGrabbed = false;
+            IsSpawnedObject = false;
+            this.Type = "interactive";
+            this.TileIndexToShow = this.ParentSheetIndex;
+
         }
 
 
-        public override string DisplayName { get => ModEntry.Instance.I18n.Get("moonslime.excavation.test.name"); set { } }
+
+
+
+        public override string DisplayName { get => ModEntry.Instance.I18n.Get("moonslime.excavation.watershifter.name"); set { } }
 
         protected override void initNetFields()
         {
@@ -56,7 +79,12 @@ namespace ExcavationSkill.Objects
 
         public override string getDescription()
         {
-            return ModEntry.Instance.I18n.Get("moonslime.excavation.test.description");
+            return ModEntry.Instance.I18n.Get("moonslime.excavation.watershifter.description");
+        }
+
+        public string FillObjectString(string objectString)
+        {
+            return string.Format(objectString, this.Price, this.Edibility);
         }
 
         public List<Vector2> GetOverlayTiles(GameLocation location)
@@ -107,7 +135,7 @@ namespace ExcavationSkill.Objects
             }
         }
 
-        public new string Name = ModEntry.Instance.I18n.Get("");
+        public new string Name = ModEntry.Instance.I18n.Get("moonslime.excavation.watershifter.BaseName");
 
         public void RemoveOverlayTiles(GameLocation location)
         {
@@ -115,7 +143,7 @@ namespace ExcavationSkill.Objects
             {
                 return;
             }
-            
+
             foreach (Vector2 overlayTile in GetOverlayTiles(location))
             {
                 if (Game1.crabPotOverlayTiles.ContainsKey(overlayTile))
@@ -129,13 +157,8 @@ namespace ExcavationSkill.Objects
             }
         }
 
-        public ShifterObject(Vector2 tileLocation, int stack = 1)
-            : base(tileLocation, 9, ModEntry.Instance.I18n.Get("moonslime.excavation.test.name"), canBeSetDown: true, canBeGrabbed: false, isHoedirt: false, isSpawnedObject: false)
-        {
 
-            this.Type = "interactive";
-            this.TileIndexToShow = this.ParentSheetIndex;
-        }
+
 
         public static bool IsValidCrabPotLocationTile(GameLocation location, int x, int y)
         {
@@ -161,6 +184,7 @@ namespace ExcavationSkill.Objects
             base.actionOnPlayerEntry();
         }
 
+        //Had to make it place a new instance of the shifter object. Else it would just use the instance data from the one the player was holding
         public override bool placementAction(GameLocation location, int x, int y, Farmer who = null)
         {
             Vector2 vector = new Vector2(x / 64, y / 64);
@@ -174,13 +198,14 @@ namespace ExcavationSkill.Objects
                 return false;
             }
 
-            UpdateOffset(location);
             this.TileLocation = new Vector2(x / 64, y / 64);
-            var shifterObject = new ShifterObject(TileLocation);
+            var shifterObject = new ShifterObject("yarg");
+            shifterObject.TileLocation = new Vector2(x / 64, y / 64);
             shifterObject.DirectionOffset.Value = GetUpdateOffset(location);
             location.objects.Add(this.TileLocation, shifterObject);
             location.playSound("waterSlosh");
             DelayedAction.playSoundAfterDelay("slosh", 150);
+            UpdateOffset(location);
             AddOverlayTiles(location);
             return true;
         }
@@ -215,6 +240,8 @@ namespace ExcavationSkill.Objects
 
             this.DirectionOffset.Value = zero;
         }
+
+        // Have to add this GetUpdate Offset for the placementAction method. Else it will place the shifter too close to land
         public Vector2 GetUpdateOffset(GameLocation location)
         {
             Vector2 zero = Vector2.Zero;
@@ -279,13 +306,15 @@ namespace ExcavationSkill.Objects
         }
 
 
+        //Make sure to call the new shifter object and not a vanilla object
         public override Item getOne()
         {
-            ShifterObject @object = new ShifterObject(Vector2.Zero, 1);
+            ShifterObject @object = new ShifterObject("yarg");
             @object._GetOneFrom(this);
             return @object;
         }
 
+        //Make sure to replace regular objects with the shifter object
         public override void _GetOneFrom(Item source)
         {
             orderData.Value = (source as ShifterObject).orderData.Value;
@@ -302,7 +331,7 @@ namespace ExcavationSkill.Objects
             }
 
             Farmer farmer = Game1.getFarmer(this.owner.Value);
-            if (@object.name == "Fiber" && this.Bait.Value == null && (farmer == null || !farmer.professions.Contains(11)))
+            if (@object.name == "Fiber" && this.Bait.Value == null)
             {
                 if (!probe)
                 {
@@ -312,7 +341,7 @@ namespace ExcavationSkill.Objects
                     }
 
                     this.Bait.Value = @object.getOne() as SOBject;
-                    who.currentLocation.playSound("Ship");
+                    who.currentLocation.playSound("fishingRodBend");
                     this.LidFlapping = true;
                     this.LidFlapTimer = 60f;
                 }
@@ -325,7 +354,7 @@ namespace ExcavationSkill.Objects
 
         public override bool checkForAction(Farmer who, bool justCheckingForActivity = false)
         {
-            if (this.TileIndexToShow == 13)
+            if (this.TileIndexToShow == 5)
             {
                 if (justCheckingForActivity)
                 {
@@ -341,24 +370,15 @@ namespace ExcavationSkill.Objects
                     return false;
                 }
 
-                Dictionary<int, string> dictionary = Game1.content.Load<Dictionary<int, string>>("Data\\Fish");
-                if (dictionary.ContainsKey(value.ParentSheetIndex))
-                {
-                    string[] array = dictionary[value.ParentSheetIndex].Split('/');
-                    int minValue = ((array.Length <= 5) ? 1 : Convert.ToInt32(array[5]));
-                    int num = ((array.Length > 5) ? Convert.ToInt32(array[6]) : 10);
-                    who.caughtFish(value.ParentSheetIndex, Game1.random.Next(minValue, num + 1));
-                }
-
                 this.readyForHarvest.Value = false;
-                this.TileIndexToShow = 9;
+                this.TileIndexToShow = 1;
                 this.LidFlapping = true;
                 this.LidFlapTimer = 60f;
                 this.Bait.Value = null;
                 who.animateOnce(279 + who.FacingDirection);
                 who.currentLocation.playSound("fishingRodBend");
                 DelayedAction.playSoundAfterDelay("coin", 500);
-                who.gainExperience(1, 5);
+                ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), 2);
                 this.Shake = Vector2.Zero;
                 this.ShakeTimer = 0f;
                 return true;
@@ -402,74 +422,64 @@ namespace ExcavationSkill.Objects
 
         public override void DayUpdate(GameLocation location)
         {
-            bool flag = Game1.getFarmer(this.owner.Value) != null && Game1.getFarmer(this.owner.Value).professions.Contains(11);
-            bool flag2 = Game1.getFarmer(this.owner.Value) != null && Game1.getFarmer(this.owner.Value).professions.Contains(10);
-            if ((long)this.owner.Value == 0L && Game1.player.professions.Contains(11))
+            var player = Game1.getFarmer(this.owner.Value);
+            //Player Can get artifacts from the shift if they have the Trowler Profession
+            bool flag = player != null && player.HasCustomProfession(Excavation_Skill.Excavation5b);
+            //Player Can get extra loot if they have the Dowser profession
+            bool flag2 = player != null && player.HasCustomProfession(Excavation_Skill.Excavation10b1);
+            if ((long)this.owner.Value == 0L && Game1.player.HasCustomProfession(Excavation_Skill.Excavation10b1))
             {
                 flag2 = true;
             }
 
-            if (!(this.Bait.Value != null || flag) || this.heldObject.Value != null)
+            //If there is no fiber in the shifter, return and don't do anything.
+            //If there is already an item in the shifter, return an don't do anything
+            if (!(this.Bait.Value != null) || this.heldObject.Value != null)
             {
                 return;
             }
 
-            this.TileIndexToShow = 13;
+            this.TileIndexToShow = 5;
             this.readyForHarvest.Value = true;
             Random random = new Random((int)Game1.stats.DaysPlayed + (int)Game1.uniqueIDForThisGame / 2 + (int)this.TileLocation.X * 1000 + (int)this.TileLocation.Y);
-            Dictionary<int, string> dictionary = Game1.content.Load<Dictionary<int, string>>("Data\\Fish");
+
+            //Generate the list of loot
             List<int> list = new List<int>();
-            double num = (flag2 ? 0.0 : 0.2);
-            if (!flag2)
+
+            //Populate the loot list
+            foreach (int item in ModEntry.ShifterLootTable)
             {
-                num += (double)location.getExtraTrashChanceForCrabPot((int)this.TileLocation.X, (int)this.TileLocation.Y);
+                list.Add(item);
             }
 
-            if (random.NextDouble() > num)
+            //If flag is true, add in the artifact loot table to the list
+            if (flag)
             {
-                foreach (KeyValuePair<int, string> item in dictionary)
+                foreach (int item in ModEntry.ArtifactLootTable)
                 {
-                    if (!item.Value.Contains("trap"))
-                    {
-                        continue;
-                    }
-
-                    bool flag3 = location is Beach || location.catchOceanCrabPotFishFromThisSpot((int)this.TileLocation.X, (int)this.TileLocation.Y);
-                    string[] array = item.Value.Split('/');
-                    if ((array[4].Equals("ocean") && !flag3) || (array[4].Equals("freshwater") && flag3))
-                    {
-                        continue;
-                    }
-
-                    if (flag2)
-                    {
-                        list.Add(item.Key);
-                        continue;
-                    }
-
-                    double num2 = Convert.ToDouble(array[2]);
-                    if (!(random.NextDouble() < num2))
-                    {
-                        continue;
-                    }
-
-                    this.heldObject.Value = new SOBject(item.Key, 1);
-                    break;
+                    list.Add(item);
                 }
             }
+
+            //If flag2 is true, add in the bonus loot table to the list
+            if (flag2)
+            {
+                foreach (int item in ModEntry.BonusLootTable)
+                {
+                    list.Add(item);
+                }
+            }
+
+            //Shuffle the list so it's in a random order!
+            list.Shuffle<int>(random);
 
             if (this.heldObject.Value == null)
             {
-                if (flag2 && list.Count > 0)
-                {
-                    this.heldObject.Value = new SOBject(list[random.Next(list.Count)], 1);
-                }
-                else
-                {
-                    this.heldObject.Value = new SOBject(random.Next(168, 173), 1);
-                }
+                heldObject.Value = new SOBject(list[random.Next(list.Count)], 1);
             }
         }
+
+
 
         public override void updateWhenCurrentLocation(GameTime time, GameLocation environment)
         {
@@ -479,29 +489,20 @@ namespace ExcavationSkill.Objects
                 if (this.LidFlapTimer <= 0f)
                 {
                     this.TileIndexToShow += ((!this.LidClosing) ? 1 : (-1));
-                    if (this.TileIndexToShow >= 12 && !this.LidClosing)
+                    if (this.TileIndexToShow >= 4 && !this.LidClosing)
                     {
                         this.LidClosing = true;
                         this.TileIndexToShow--;
-                        if (this.TileIndexToShow <= 8)
-                        {
-                            this.LidFlapTimer = 0f;
-                            this.LidFlapping = false;
-                        }
+
                     }
-                    else if (this.TileIndexToShow <= 8 && this.LidClosing)
+                    else if (this.TileIndexToShow <= 0 && this.LidClosing)
                     {
                         this.LidClosing = false;
                         this.TileIndexToShow++;
                         this.LidFlapping = false;
-                        if (this.TileIndexToShow >= 12)
-                        {
-                            this.LidFlapTimer = 0f;
-                            this.LidFlapping = false;
-                        }
                         if (this.Bait.Value != null)
                         {
-                            this.TileIndexToShow = 12;
+                            this.TileIndexToShow = 4;
                         }
                     }
 
@@ -532,7 +533,7 @@ namespace ExcavationSkill.Objects
         {
             if (this.heldObject.Value != null)
             {
-                this.TileIndexToShow = 13;
+                this.TileIndexToShow = 5;
             }
             else if (this.TileIndexToShow == 0)
             {
@@ -571,11 +572,6 @@ namespace ExcavationSkill.Objects
 
         public override void drawWhenHeld(SpriteBatch spriteBatch, Vector2 objectPosition, Farmer f)
         {
-            if ((bool)f.ActiveObject.bigCraftable.Value)
-            {
-                spriteBatch.Draw(Game1.bigCraftableSpriteSheet, objectPosition, getSourceRectForBigCraftable(f.ActiveObject.ParentSheetIndex), Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, Math.Max(0f, (float)(f.getStandingY() + 3) / 10000f));
-                return;
-            }
 
             spriteBatch.Draw(ModEntry.Assets.tilesheet, objectPosition, GameLocation.getSourceRectForObject(f.ActiveObject.ParentSheetIndex), Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, Math.Max(0f, (float)(f.getStandingY() + 3) / 10000f));
             if (f.ActiveObject == null || !f.ActiveObject.Name.Contains("="))
@@ -603,24 +599,9 @@ namespace ExcavationSkill.Objects
 
             int num = (int)this.TileLocation.X;
             int num2 = (int)this.TileLocation.Y;
-            if ((bool)this.bigCraftable.Value)
-            {
-                Vector2 vector = getScale();
-                vector *= 4f;
-                Vector2 vector2 = Game1.GlobalToLocal(Game1.viewport, new Vector2(num * 64, num2 * 64 - 64));
-                b.Draw(destinationRectangle: new Microsoft.Xna.Framework.Rectangle((int)(vector2.X - vector.X / 2f), (int)(vector2.Y - vector.Y / 2f), (int)(64f + vector.X), (int)(128f + vector.Y / 2f)), texture: Game1.bigCraftableSpriteSheet, sourceRectangle: getSourceRectForBigCraftable(showNextIndex ? (base.ParentSheetIndex + 1) : base.ParentSheetIndex), color: Color.White, rotation: 0f, origin: Vector2.Zero, effects: SpriteEffects.None, layerDepth: Math.Max(0f, (float)((num2 + 1) * 64 - 1) / 10000f) + (((int)this.ParentSheetIndex == 105 || (int)this.ParentSheetIndex == 264) ? 0.0015f : 0f));
-                if (Name.Equals("Loom") && (int)minutesUntilReady.Value > 0)
-                {
-                    b.Draw(Game1.objectSpriteSheet, getLocalPosition(Game1.viewport) + new Vector2(32f, 0f), Game1.getSourceRectForStandardTileSheet(Game1.objectSpriteSheet, 435), Color.White, scale.X, new Vector2(32f, 32f), 1f, SpriteEffects.None, Math.Max(0f, (float)((num2 + 1) * 64 - 1) / 10000f + 0.0001f));
-                }
 
-                return;
-            }
 
-            if ((int)this.ParentSheetIndex != 590 && (int)this.ParentSheetIndex != 742)
-            {
-                b.Draw(Game1.shadowTexture, getLocalPosition(Game1.viewport) + new Vector2(32f, 53f), Game1.shadowTexture.Bounds, Color.White, 0f, new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y), 4f, SpriteEffects.None, (float)getBoundingBox(new Vector2(num, num2)).Bottom / 15000f);
-            }
+            b.Draw(Game1.shadowTexture, getLocalPosition(Game1.viewport) + new Vector2(32f, 53f), Game1.shadowTexture.Bounds, Color.White, 0f, new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y), 4f, SpriteEffects.None, (float)getBoundingBox(new Vector2(num, num2)).Bottom / 15000f);
 
             Texture2D objectSpriteSheet = ModEntry.Assets.tilesheet;
             Vector2 position = Game1.GlobalToLocal(Game1.viewport, new Vector2(num * 64 + 32, num2 * 64 + 32));
@@ -645,41 +626,29 @@ namespace ExcavationSkill.Objects
                 flag = false;
             }
 
-            if ((bool)this.bigCraftable.Value)
+            if ((int)this.ParentSheetIndex != 590 && drawShadow)
             {
-                Microsoft.Xna.Framework.Rectangle sourceRectForBigCraftable = getSourceRectForBigCraftable(this.ParentSheetIndex);
-                spriteBatch.Draw(Game1.bigCraftableSpriteSheet, location + new Vector2(32f, 32f), sourceRectForBigCraftable, color * transparency, 0f, new Vector2(8f, 16f), 4f * (((double)scaleSize < 0.2) ? scaleSize : (scaleSize / 2f)), SpriteEffects.None, layerDepth);
-                if (flag)
-                {
-                    Utility.drawTinyDigits(stack, spriteBatch, location + new Vector2((float)(64 - Utility.getWidthOfTinyDigitString(stack, 3f * scaleSize)) + 3f * scaleSize, 64f - 18f * scaleSize + 2f), 3f * scaleSize, 1f, color);
-                }
+                spriteBatch.Draw(Game1.shadowTexture, location + new Vector2(32f, 48f), Game1.shadowTexture.Bounds, color * 0.5f, 0f, new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y), 3f, SpriteEffects.None, layerDepth - 0.0001f);
             }
-            else
+
+            spriteBatch.Draw(ModEntry.Assets.tilesheet, location + new Vector2((int)(32f * scaleSize), (int)(32f * scaleSize)), Game1.getSourceRectForStandardTileSheet(ModEntry.Assets.tilesheet, parentSheetIndex, 16, 16), color * transparency, 0f, new Vector2(8f, 8f) * scaleSize, 4f * scaleSize, SpriteEffects.None, layerDepth);
+            if (flag)
             {
-                if ((int)this.ParentSheetIndex != 590 && drawShadow)
-                {
-                    spriteBatch.Draw(Game1.shadowTexture, location + new Vector2(32f, 48f), Game1.shadowTexture.Bounds, color * 0.5f, 0f, new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y), 3f, SpriteEffects.None, layerDepth - 0.0001f);
-                }
+                Utility.drawTinyDigits(stack, spriteBatch, location + new Vector2((float)(64 - Utility.getWidthOfTinyDigitString(stack, 3f * scaleSize)) + 3f * scaleSize, 64f - 18f * scaleSize + 1f), 3f * scaleSize, 1f, color);
+            }
 
-                spriteBatch.Draw(ModEntry.Assets.tilesheet, location + new Vector2((int)(32f * scaleSize), (int)(32f * scaleSize)), Game1.getSourceRectForStandardTileSheet(ModEntry.Assets.tilesheet, parentSheetIndex, 16, 16), color * transparency, 0f, new Vector2(8f, 8f) * scaleSize, 4f * scaleSize, SpriteEffects.None, layerDepth);
-                if (flag)
-                {
-                    Utility.drawTinyDigits(stack, spriteBatch, location + new Vector2((float)(64 - Utility.getWidthOfTinyDigitString(stack, 3f * scaleSize)) + 3f * scaleSize, 64f - 18f * scaleSize + 1f), 3f * scaleSize, 1f, color);
-                }
+            if (drawStackNumber != 0 && (int)this.Quality > 0)
+            {
+                Microsoft.Xna.Framework.Rectangle value = (((int)this.Quality < 4) ? new Microsoft.Xna.Framework.Rectangle(338 + ((int)this.Quality - 1) * 8, 400, 8, 8) : new Microsoft.Xna.Framework.Rectangle(346, 392, 8, 8));
+                Texture2D mouseCursors = Game1.mouseCursors;
+                float num = (((int)this.Quality < 4) ? 0f : (((float)Math.Cos((double)Game1.currentGameTime.TotalGameTime.Milliseconds * Math.PI / 512.0) + 1f) * 0.05f));
+                spriteBatch.Draw(mouseCursors, location + new Vector2(12f, 52f + num), value, color * transparency, 0f, new Vector2(4f, 4f), 3f * scaleSize * (1f + num), SpriteEffects.None, layerDepth);
+            }
 
-                if (drawStackNumber != 0 && (int)this.Quality > 0)
-                {
-                    Microsoft.Xna.Framework.Rectangle value = (((int)this.Quality < 4) ? new Microsoft.Xna.Framework.Rectangle(338 + ((int)this.Quality - 1) * 8, 400, 8, 8) : new Microsoft.Xna.Framework.Rectangle(346, 392, 8, 8));
-                    Texture2D mouseCursors = Game1.mouseCursors;
-                    float num = (((int)this.Quality < 4) ? 0f : (((float)Math.Cos((double)Game1.currentGameTime.TotalGameTime.Milliseconds * Math.PI / 512.0) + 1f) * 0.05f));
-                    spriteBatch.Draw(mouseCursors, location + new Vector2(12f, 52f + num), value, color * transparency, 0f, new Vector2(4f, 4f), 3f * scaleSize * (1f + num), SpriteEffects.None, layerDepth);
-                }
-
-                if (base.Category == -22 && uses.Value > 0)
-                {
-                    float num2 = ((float)(FishingRod.maxTackleUses - uses.Value) + 0f) / (float)FishingRod.maxTackleUses;
-                    spriteBatch.Draw(Game1.staminaRect, new Microsoft.Xna.Framework.Rectangle((int)location.X, (int)(location.Y + 56f * scaleSize), (int)(64f * scaleSize * num2), (int)(8f * scaleSize)), Utility.getRedToGreenLerpColor(num2));
-                }
+            if (base.Category == -22 && uses.Value > 0)
+            {
+                float num2 = ((float)(FishingRod.maxTackleUses - uses.Value) + 0f) / (float)FishingRod.maxTackleUses;
+                spriteBatch.Draw(Game1.staminaRect, new Microsoft.Xna.Framework.Rectangle((int)location.X, (int)(location.Y + 56f * scaleSize), (int)(64f * scaleSize * num2), (int)(8f * scaleSize)), Utility.getRedToGreenLerpColor(num2));
             }
 
             if ((bool)this.IsRecipe)

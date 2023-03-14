@@ -42,7 +42,7 @@ namespace ExcavationSkill
         private static void After_Gain_EXP(Dictionary<ISalable, int[]> __result)
         {
 
-            __result.Add(new ShifterObject(new Vector2(710, 1)), new int[2] { 2, 2147483647 });
+            __result.Add(new ShifterObject("yarg"), new int[2] { 2, 2147483647 });
         }
     }
 }
