@@ -1,9 +1,9 @@
 ﻿{
     "Name": "CookingSkill",
     "Author": "moonslime",
-    "Version": "1.0.0",
+    "Version": "1.4.5",
     "Description": "A weird updated port of SpaceChase0's cooking skill",
-    "UniqueID": "moonslime.CookingSkill",
+    "UniqueID": "spacechase0.CookingSkill",
     "EntryDll": "CookingSkill.dll",
     "MinimumApiVersion": "3.0.0",
     "UpdateKeys": [

@@ -66,7 +66,7 @@ namespace ExcavationSkill
                                 objectIndex = 96;
                                 break;
                             case 1:
-                                objectIndex = ((!who.hasOrWillReceiveMail("lostBookFound")) ? 770 : (((int)Game1.netWorldState.Value.LostBooksFound < 21) ? 102 : 770));
+                                objectIndex = ((!who.hasOrWillReceiveMail("lostBookFound")) ? 770 : (((int)Game1.netWorldState.Value.LostBooksFound.Value < 21) ? 102 : 770));
                                 break;
                             case 2:
                                 objectIndex = 110;
@@ -117,7 +117,7 @@ namespace ExcavationSkill
                         {
                             bonusLoot2 = true;
                         }
-                        Utilities.ApplyExcavationSkill(Game1.getFarmer(who.uniqueMultiplayerID), bonusLoot2, 8, xLocation, yLocation);
+                        Utilities.ApplyExcavationSkill(Game1.getFarmer(who.UniqueMultiplayerID), bonusLoot2, 8, xLocation, yLocation);
                         ///Custom Code Location
 
 
@@ -167,8 +167,8 @@ namespace ExcavationSkill
                     bonusLoot = true;
                 }
 
-                ModEntry.AddEXP(Game1.getFarmer(who.uniqueMultiplayerID), 10);
-                Utilities.ApplySpeedBoost(Game1.getFarmer(who.uniqueMultiplayerID));
+                ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), 10);
+                Utilities.ApplySpeedBoost(Game1.getFarmer(who.UniqueMultiplayerID));
                 if (bonusLoot)
                 {
                     Game1.createObjectDebris(objectIndex, xLocation, yLocation, who.UniqueMultiplayerID, __instance);
@@ -180,7 +180,7 @@ namespace ExcavationSkill
                 {
                     Game1.createObjectDebris(objectIndex, xLocation, yLocation, who.UniqueMultiplayerID, __instance);
                     //Custom Code Location
-                    ModEntry.AddEXP(Game1.getFarmer(who.uniqueMultiplayerID), 10);
+                    ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), 10);
                     //Custom Code Location
                 }
 

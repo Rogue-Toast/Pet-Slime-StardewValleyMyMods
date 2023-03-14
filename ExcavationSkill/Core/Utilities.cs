@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using MoonShared;
 using Microsoft.Xna.Framework;
 using SpaceCore;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using StardewValley;
-using xTile.Dimensions;
 using System.Linq;
-using StardewValley.Locations;
 
 namespace ExcavationSkill
 {
@@ -38,7 +33,7 @@ namespace ExcavationSkill
                 // Take all recipe lists up to the current level
                 .TakeWhile(pair => pair.Key < level)
                 .SelectMany(pair => pair.Value) // Flatten recipe lists into their recipes
-                .Select(r => ModEntry.ObjectPrefix + r) // Add item prefixes
+                .Select(r => r) // Add item prefixes
                 .Where(r => !Game1.player.craftingRecipes.ContainsKey(r)); // Take recipes not known by the player
             foreach (string recipe in missingRecipes)
             {
@@ -53,7 +48,7 @@ namespace ExcavationSkill
             List<CraftingRecipe> excevationRecipes =
                 GetExcavationRecipesForLevel(level)
                 .ToList()
-                .ConvertAll(name => new CraftingRecipe(ModEntry.ObjectPrefix + name))
+                .ConvertAll(name => new CraftingRecipe(name))
                 .Where(recipe => !Game1.player.knowsRecipe(recipe.name))
                 .ToList();
             if (excevationRecipes is not null && excevationRecipes.Count > 0)

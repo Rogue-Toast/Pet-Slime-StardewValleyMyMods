@@ -16,7 +16,7 @@
     "excavation5b.desc": "Have a 25% chance to find an artifact while panning.",
     "excavation10a1.name": "Antiquarian",
     "excavation10a1.desc": "Be able to find additional items while at an artifact spot",
-    "excavation10a2.name": "Antiquary",
+    "excavation10a2.name": "Curator",
     "excavation10a2.desc": "Sell artifacts that are on displays for twice the amount!",
     "excavation10b1.name": "Dowser",
     "excavation10b1.desc": "While panning, be able to find additional items.",
@@ -29,6 +29,10 @@
     "excavation10a2.prestige.description": "Sell artifacts that are on display for three times the amount!",
     "excavation10b1.prestige.description": "While panning, be able to find a lot more additional items.",
     "excavation10b2.prestige.description": "On Successful Panning or Digging an artifact spot, \n Get a speed boost for two minutes.",
+
+    "moonslime.excavation.test.name": "Does this exist?",
+    "moonslime.excavation.test.description": "Does this exist?",
+
 
     "moonslime.excavation.h_display.name": "Hardwood Display",
     "moonslime.excavation.h_display.description": "A display stand made out of hard wood.",
@@ -94,6 +98,8 @@
     "moonslime.excavation.h_rare_disc.description": "A rare disc on a hardwood stand.",
     "moonslime.excavation.h_rusty_cog.name": "Hardwood Display: Rusty Cog",
     "moonslime.excavation.h_rusty_cog.description": "A rusty cog on a hardwood stand.",
+    "moonslime.excavation.h_rusty_spur.name": "Hardwood Display: Rusty Sur",
+    "moonslime.excavation.h_rusty_spur.description": "A rusty spur on a hardwood stand.",
     "moonslime.excavation.h_rusty_spoon.name": "Hardwood Display: Rusty Spoon",
     "moonslime.excavation.h_rusty_spoon.description": "A rusty spoon on a hardwood stand.",
     "moonslime.excavation.h_skeletal_hand.name": "Hardwood Display: Skeletal Hand",
@@ -171,6 +177,8 @@
     "moonslime.excavation.w_rare_disc.description": "A rare disc on a wooden stand.",
     "moonslime.excavation.w_rusty_cog.name": "Wooden Display: Rusty Cog",
     "moonslime.excavation.w_rusty_cog.description": "A rusty cog on a wooden stand.",
+    "moonslime.excavation.w_rusty_spur.name": "Wooden Display: Rusty Spur",
+    "moonslime.excavation.w_rusty_spur.description": "A rusty spur on a wooden stand.",
     "moonslime.excavation.w_rusty_spoon.name": "Wooden Display: Rusty Spoon",
     "moonslime.excavation.w_rusty_spoon.description": "A rusty spoon on a wooden stand.",
     "moonslime.excavation.w_skeletal_hand.name": "Wooden Display: Skeletal Hand",
@@ -183,6 +191,10 @@
     "moonslime.excavation.w_strange_doll_yellow.description": "A strange doll on a wooden stand.",
     "moonslime.excavation.w_trilobite.name": "Wooden Display: Trilobite Fossil",
     "moonslime.excavation.w_trilobite.description": "A trilobite fossil on a wooden stand.",
+
+
+    "moonslime.excavation.totem_volcano_warp.name": "Dwarf Gadget: Infinite Volcano Simulation",
+    "moonslime.excavation.totem_volcano_warp.description": "A device made from your studies of artifacts. Warps you to version of the Volcano that you can climb infinitely. Warning: Bring a warping item to escape.",
 
 
     "moonslime.excavation.grinder.name": "Grinder",

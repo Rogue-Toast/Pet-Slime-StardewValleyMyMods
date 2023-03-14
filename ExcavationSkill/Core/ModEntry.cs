@@ -13,6 +13,12 @@ using StardewModdingAPI.Events;
 using StardewValley;
 using IJsonAssetsApi = MoonShared.APIs.IJsonAssetsApi;
 using MoonShared.Patching;
+using ExcavationSkill.Patches;
+using StardewValley.Tools;
+using System.Reflection;
+using StardewValley.Menus;
+using ExcavationSkill.Objects;
+using SpaceShared.APIs;
 
 namespace ExcavationSkill
 {
@@ -26,15 +32,26 @@ namespace ExcavationSkill
         internal static bool PFWLoaded => ModEntry.Instance.Helper.ModRegistry.IsLoaded("Digus.ProducerFrameworkMod");
         internal static bool DGALoaded => ModEntry.Instance.Helper.ModRegistry.IsLoaded("spacechase0.DynamicGameAssets");
         internal static bool MargoLoaded => ModEntry.Instance.Helper.ModRegistry.IsLoaded("DaLion.Overhaul");
+        internal static bool XPDisplayLoaded => ModEntry.Instance.Helper.ModRegistry.IsLoaded("Shockah.XPDisplay");
+
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+        private readonly List<Func<Item, (int? SkillIndex, string? SpaceCoreSkillName)?>> ToolSkillMatchers = new()
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+        {
+            o => o is Hoe ? (null, "moonslime.Excavation") : null,
+            o => o is Pan ? (null, "moonslime.Excavation") : null
+        };
 
         internal static IJsonAssetsApi JsonAssets;
         internal static IProducerFrameworkAPI ProducerFramework;
         internal static IDynamicGameAssetsApi DynamicGameAssets;
         internal static IMargo MargoAPI;
+        internal static IXPDisplayApi XpAPI;
 
         internal ITranslationHelper I18n => this.Helper.Translation;
         internal static Dictionary<string, List<string>> ItemDefinitions;
         internal static IEnumerable<KeyValuePair<string, List<string>>> ExcavationSkillLevelUpTable;
+        internal static Dictionary<Vector2, int> crabPotOverlayTiles = new Dictionary<Vector2, int>();
         public static readonly IList<int> BonusLootTable = new List<int>();
         public static readonly IList<int> ArtifactLootTable = new List<int>();
         internal const string ObjectPrefix = "moonslime.excavation."; // DO NOT EDIT
@@ -65,6 +82,9 @@ namespace ExcavationSkill
         {
             // delay loading our stuff by just a tiny bit, to make sure other mods load first 
             this.Helper.Events.GameLoop.OneSecondUpdateTicked += this.Event_LoadLate;
+
+            var sc = Helper.ModRegistry.GetApi<ISpaceCoreApi>("spacechase0.SpaceCore");
+            sc.RegisterSerializerType(typeof(ShifterObject));
         }
 
         private void Event_LoadLate(object sender, OneSecondUpdateTickedEventArgs e)
@@ -137,6 +157,15 @@ namespace ExcavationSkill
                             Log.Error("Can't access the MARGO API. Is the mod installed correctly?");
                         }
                     }
+                    if (XPDisplayLoaded)
+                    {
+                        XpAPI = this.Helper.ModRegistry.GetApi<IXPDisplayApi>("Shockah.XPDisplay");
+                        if (MargoAPI is null)
+                        {
+                            Log.Error("Can't access the MARGO API. Is the mod installed correctly?");
+                        }
+                    }
+                    
                     isLoaded = true;
                 }
             }
@@ -162,7 +191,10 @@ namespace ExcavationSkill
                     new CheckForBuriedItem_Mineshaft_patch(),
                     new DigUpArtifactSpot_Patcher(),
                     new GetPanItems_Patcher(),
-                    new GetPriceAfterMultipliers_patcher());
+                    new GetPriceAfterMultipliers_patcher(),
+                    new VolcanoWarpTotem_patch(),
+                    new VolcanoDungeonLevel_patch(),
+                    new PierreShopTest_patch());
 
             }
             catch (Exception e)
@@ -185,7 +217,6 @@ namespace ExcavationSkill
             this.Helper.Events.GameLoop.DayStarted += this.DayStarted;
         }
 
-
         private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e)
         {
             if (MargoAPI is not null && ModEntry.Config.EnablePrestige)
@@ -193,6 +224,12 @@ namespace ExcavationSkill
                 //if MargoAPI is detcted, Register our skill for Prestige
                 string id = SpaceCore.Skills.GetSkill("moonslime.Excavation").Id;
                 MargoAPI.RegisterCustomSkillForPrestige(id);
+            }
+            if (XpAPI is not null)
+            {
+                //mark the hoe as a tool for archaeology
+                XpAPI.RegisterToolSkillMatcher(this.ToolSkillMatchers[0]);
+                XpAPI.RegisterToolSkillMatcher(this.ToolSkillMatchers[1]);
             }
             if (PFWLoaded)
             {
@@ -205,9 +242,14 @@ namespace ExcavationSkill
                 }
                 ProducerFramework.AddContentPack(directory: Path.Combine(Helper.DirectoryPath, Assets.PFWPackPath));
             }
+
         }
 
-        
+        private static void SetCraftingField(CraftingRecipe craftingRecipe, string fieldName, object value)
+        {
+            typeof(CraftingRecipe).GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public).SetValue(craftingRecipe, value);
+        }
+
         private void GameLoop_DayStarted(object sender, DayStartedEventArgs e)
         {
             // On day load, check just to make sure if people are missing recipes or not.
@@ -306,6 +348,11 @@ namespace ExcavationSkill
         public static void AddEXP(StardewValley.Farmer who, int amount)
         {
             SpaceCore.Skills.AddExperience(who, "moonslime.Excavation", amount);
+        }
+
+        public void RegisterNewPaths()
+        {
+
         }
     }
 }

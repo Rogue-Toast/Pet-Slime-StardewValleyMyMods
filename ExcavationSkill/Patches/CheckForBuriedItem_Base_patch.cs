@@ -143,7 +143,7 @@ namespace ExcavationSkill
             {
                 bool flag = who != null && who.CurrentTool != null && who.CurrentTool is Hoe && who.CurrentTool.hasEnchantmentOfType<GenerousEnchantment>();
                 float num = 0.5f;
-                if (!__instance.isFarm && (bool)__instance.isOutdoors && Game1.GetSeasonForLocation(__instance).Equals("winter") && random.NextDouble() < 0.08 && !explosion && !detectOnly && !(__instance is Desert))
+                if (!__instance.IsFarm && (bool)__instance.IsOutdoors && Game1.GetSeasonForLocation(__instance).Equals("winter") && random.NextDouble() < 0.08 && !explosion && !detectOnly && !(__instance is Desert))
                 {
                     Game1.createObjectDebris((random.NextDouble() < 0.5) ? 412 : 416, xLocation, yLocation);
                     #region Custom Code
@@ -160,7 +160,7 @@ namespace ExcavationSkill
                     __result = "";
                 }
 
-                if ((bool)__instance.isOutdoors && random.NextDouble() < 0.03 && !explosion)
+                if ((bool)__instance.IsOutdoors && random.NextDouble() < 0.03 && !explosion)
                 {
                     if (detectOnly)
                     {

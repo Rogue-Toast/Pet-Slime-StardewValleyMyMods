@@ -9,6 +9,7 @@ using HarmonyLib;
 using StardewModdingAPI;
 using StardewValley.Objects;
 using StardewValley;
+using MoonShared;
 
 namespace CookingSkill.Patches
 {
@@ -45,15 +46,19 @@ namespace CookingSkill.Patches
         /// <remarks>This is copied verbatim from the original method with some changes (marked with comments).</remarks>
         public static bool Before_ConsumeIngredients(ref CraftingRecipe __instance, List<Chest> additional_materials)
         {
+            Log.Debug("Cooking 2 patch fired 1");
             CraftingRecipePatcher.LastUsedItems.Clear();
             var recipe = __instance;
             if (!recipe.isCookingRecipe)
                 return true;
 
+            Log.Debug("Cooking 2 patch fired 2");
             for (int recipeIndex = recipe.recipeList.Count - 1; recipeIndex >= 0; --recipeIndex)
             {
                 int requiredCount = recipe.recipeList[recipe.recipeList.Keys.ElementAt(recipeIndex)];
                 bool foundInBackpack = false;
+
+                Log.Debug("Cooking 3 patch fired 1");
                 for (int itemIndex = Game1.player.Items.Count - 1; itemIndex >= 0; --itemIndex)
                 {
                     if (Game1.player.Items[itemIndex] is StardewValley.Object obj && !obj.bigCraftable.Value && (obj.ParentSheetIndex == recipe.recipeList.Keys.ElementAt(recipeIndex) || obj.Category == recipe.recipeList.Keys.ElementAt(recipeIndex) || CraftingRecipe.isThereSpecialIngredientRule(obj, recipe.recipeList.Keys.ElementAt(recipeIndex))))
@@ -77,14 +82,20 @@ namespace CookingSkill.Patches
                         }
                     }
                 }
+
+                Log.Debug("Cooking 4 patch fired 1");
                 if (additional_materials != null && !foundInBackpack)
                 {
+
+                    Log.Debug("Cooking 5 patch fired 1");
                     foreach (Chest chest in additional_materials)
                     {
                         if (chest == null)
                             continue;
 
                         bool removedItem = false;
+
+                        Log.Debug("Cooking 6 patch fired 1");
                         for (int materialIndex = chest.items.Count - 1; materialIndex >= 0; --materialIndex)
                         {
                             if (chest.items[materialIndex] != null && chest.items[materialIndex] is StardewValley.Object && (chest.items[materialIndex].ParentSheetIndex == recipe.recipeList.Keys.ElementAt(recipeIndex) || chest.items[materialIndex].Category == recipe.recipeList.Keys.ElementAt(recipeIndex) || CraftingRecipe.isThereSpecialIngredientRule((StardewValley.Object)chest.items[materialIndex], recipe.recipeList.Keys.ElementAt(recipeIndex))))

@@ -69,8 +69,8 @@ namespace ExcavationSkill
         [HarmonyLib.HarmonyPostfix]
         private static void After_Gain_EXP(GameLocation __instance, int xLocation, int yLocation, Farmer who)
         {
-            ModEntry.AddEXP(Game1.getFarmer(who.uniqueMultiplayerID), 10);
-            Utilities.ApplySpeedBoost(Game1.getFarmer(who.uniqueMultiplayerID));
+            ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), 10);
+            Utilities.ApplySpeedBoost(Game1.getFarmer(who.UniqueMultiplayerID));
 
             double test = Utilities.GetLevel() * 0.05;
             bool bonusLoot = false;

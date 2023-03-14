@@ -117,18 +117,18 @@ namespace RanchingToolUpgrades
         {
             FarmAnimal animal = ModEntry.Instance.Helper.Reflection.GetField<FarmAnimal>((MilkPail)this, "animal").GetValue();
 
-            if (animal != null && animal.currentProduce > 0 && animal.age >= animal.ageWhenMature && animal.toolUsedForHarvest.Equals(base.BaseName))
+            if (animal != null && animal.currentProduce.Value > 0 && animal.age.Value >= animal.ageWhenMature.Value && animal.toolUsedForHarvest.Equals(base.BaseName))
             {
                 // do extra friendship effect
                 int extraFriendship = ModEntry.Config.ExtraFriendshipBase * this.UpgradeLevel;
-                animal.friendshipTowardFarmer.Value = Math.Min(1000, animal.friendshipTowardFarmer + extraFriendship);
+                animal.friendshipTowardFarmer.Value = Math.Min(1000, animal.friendshipTowardFarmer.Value + extraFriendship);
                 Log.Debug($"Applied extra friendship {extraFriendship}.  Total friendship: {animal.friendshipTowardFarmer.Value}");
 
                 // do quality bump effect
                 float higherQualityChance = ModEntry.Config.QualityBumpChanceBase * this.UpgradeLevel;
                 if (higherQualityChance > Game1.random.NextDouble())
                 {
-                    switch (animal.produceQuality)
+                    switch (animal.produceQuality.Get())
                     {
                         case 0:
                             animal.produceQuality.Set(1);
@@ -160,9 +160,9 @@ namespace RanchingToolUpgrades
                 Log.Debug($"Extra Produce Chance {ModEntry.Config.ExtraProduceChance} generated {extraProduce} additional produce from {this.UpgradeLevel} draws.");
                 if (extraProduce > 0)
                 {
-                    who.addItemToInventory(new StardewValley.Object(Vector2.Zero, animal.currentProduce, null, false, true, false, false)
+                    who.addItemToInventory(new StardewValley.Object(Vector2.Zero, animal.currentProduce.Value, null, false, true, false, false)
                     {
-                        Quality = animal.produceQuality,
+                        Quality = animal.produceQuality.Value,
                         Stack = extraProduce
                     });
                 }

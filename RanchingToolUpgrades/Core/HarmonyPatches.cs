@@ -193,7 +193,7 @@ namespace RanchingToolUpgrades
             {
                 if (heldItem != null && heldItem is Hat)
                 {
-                    int hatId = (int)(heldItem as Hat).which;
+                    int hatId = (int)(heldItem as Hat).which.Value;
                     if (hatId == ModEntry.JsonAssets.GetHatId("Pan"))
                     {
                         __result = new UpgradeablePan(0);

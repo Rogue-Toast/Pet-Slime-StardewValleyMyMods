@@ -44,7 +44,9 @@ namespace MoonShared
         /// <returns>The corresponding <see cref="MethodInfo"/>, if found.</returns>
         /// <exception cref="MissingMethodException">If a matching method is not found.</exception>
         [DebuggerStepThrough]
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
         public static MethodInfo RequireMethod(this Type type, string name, Type[]? parameters)
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
         {
             return AccessTools.Method(type, name, parameters);
         }

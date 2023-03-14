@@ -5,6 +5,7 @@ using StardewValley;
 using StardewValley.Menus;
 using SObject = StardewValley.Object;
 using MoonShared.Patching;
+using MoonShared;
 
 namespace CookingSkill.Patches
 {
@@ -20,6 +21,7 @@ namespace CookingSkill.Patches
                 original: this.RequireMethod<CraftingPage>("clickCraftingRecipe"),
                 prefix: this.GetHarmonyMethod(nameof(Before_ClickCraftingRecipe))
             );
+            
         }
 
 
@@ -35,10 +37,12 @@ namespace CookingSkill.Patches
             // - handle Qi seasoning
             // - compare with latest game code to see if anything else changed
 
+            Log.Debug("Cooking 1 patch fired 1");
             CraftingPage menu = __instance;
             if (!menu.pagesOfCraftingRecipes[___currentCraftingPage][c].isCookingRecipe)
                 return true;
 
+            Log.Debug("Cooking 1 patch fired 2");
             Item crafted = menu.pagesOfCraftingRecipes[___currentCraftingPage][c].createItem();
 
             // custom code begins
@@ -47,9 +51,11 @@ namespace CookingSkill.Patches
             bool didCraft = false;
             // custom code ends
 
+            Log.Debug("Cooking 1 patch fired 3");
             Game1.player.checkForQuestComplete(null, -1, -1, crafted, null, 2);
             if (___heldItem == null)
             {
+                Log.Debug("Cooking 1 patch fired 4.1");
                 // custom code begins
                 if (consume)
                     menu.pagesOfCraftingRecipes[___currentCraftingPage][c].consumeIngredients(menu._materialContainers);
@@ -62,8 +68,9 @@ namespace CookingSkill.Patches
             }
             else if (___heldItem.Name.Equals(crafted.Name) && ___heldItem.Stack + menu.pagesOfCraftingRecipes[___currentCraftingPage][c].numberProducedPerCraft - 1 < ___heldItem.maximumStackSize())
             {
+                Log.Debug("Cooking 1 patch fired 4.2");
                 ___heldItem.Stack += menu.pagesOfCraftingRecipes[___currentCraftingPage][c].numberProducedPerCraft;
-
+                
                 // custom code begins
                 if (consume)
                     menu.pagesOfCraftingRecipes[___currentCraftingPage][c].consumeIngredients(menu._materialContainers);
@@ -74,11 +81,13 @@ namespace CookingSkill.Patches
                     Game1.playSound("coin");
             }
 
+            Log.Debug("Cooking 1 patch fired 5");
             // custom code begins
             if (!didCraft)
                 return false;
             // custom code ends
 
+            Log.Debug("Cooking 1 patch fired 6");
             if (!___cooking && Game1.player.craftingRecipes.ContainsKey(menu.pagesOfCraftingRecipes[___currentCraftingPage][c].name))
                 Game1.player.craftingRecipes[menu.pagesOfCraftingRecipes[___currentCraftingPage][c].name] += menu.pagesOfCraftingRecipes[___currentCraftingPage][c].numberProducedPerCraft;
             if (___cooking)
@@ -86,7 +95,7 @@ namespace CookingSkill.Patches
                 Game1.player.cookedRecipe(___heldItem.ParentSheetIndex);
 
                 // custom code begins
-
+                Log.Debug("Cooking 1 patch fired");
                 SpaceCore.Skills.AddExperience(Game1.player, "spacechase0.Cooking", itemObj.Edibility);
                 // custom code ends
             }

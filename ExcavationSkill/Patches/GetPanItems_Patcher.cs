@@ -49,7 +49,7 @@ namespace ExcavationSkill
         Pan __instance, List<Item> __result, GameLocation location, Farmer who)
         {
             //Add EXP for the player Panning and check for the gold rush profession
-            Utilities.ApplyExcavationSkill(Game1.getFarmer(who.uniqueMultiplayerID));
+            Utilities.ApplyExcavationSkill(Game1.getFarmer(who.UniqueMultiplayerID));
 
             //Add Artifacts to the drop list chance if they have the Trowler Profession
             if (Game1.player.HasCustomProfession(ExcavationSkill.Excavation5b))

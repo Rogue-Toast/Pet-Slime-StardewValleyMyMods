@@ -50,6 +50,23 @@ namespace ExcavationSkill
         [AssetProperty("assets/Excavation10b2P.png")]
         public Texture2D Excavation10b2P { get; set; }
 
+
+
+        [AssetProperty("assets/tilesheet.png")]
+        public Texture2D tilesheet { get; set; }
+
+        [AssetProperty("assets/totem_volcano_warp.png", Priority = AssetLoadPriority.Medium)]
+        public Texture2D Totem_volcano_warp { get; set; }
+        public string Totem_volcano_warpPath { get; set; }
+
+
+        [AssetProperty("assets/Flooring.png")]
+        public static Texture2D Flooring { get; set; }
+        [AssetProperty("assets/Flooring_winter.png")]
+        public static Texture2D FlooringWinter { get; set; }
+
+
+
         [AssetProperty("assets/itemDefinitions.json")]
         public Dictionary<string, List<string>> ItemDefinitions { get; set; }
 

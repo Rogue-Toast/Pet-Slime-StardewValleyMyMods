@@ -143,7 +143,7 @@ namespace CookingSkill
 
         private bool Init()
         {
-
+            Log.Debug("Cooking Init fired");
             // Harmony patches
             try
             {

@@ -15,7 +15,7 @@ namespace RanchingToolUpgrades
     {
 
         public const int MaxUpgradeLevel = 4;
-        private TemporaryAnimatedSprite tempSprite;
+        private TemporaryAnimatedSprite TempSprite;
         private int ToolUseDirection = 0;
         public new string Name = "Pan";
 
@@ -81,7 +81,7 @@ namespace RanchingToolUpgrades
             who.faceDirection(2);
 
             int genderOffset = who.IsMale ? -1 : 0;
-            this.tempSprite = new TemporaryAnimatedSprite(
+            this.TempSprite = new TemporaryAnimatedSprite(
                 textureName: ModEntry.Assets.SpritesPath,
                 sourceRect: AnimationSourceRectangle(this.UpgradeLevel),
                 animationInterval: 1000,
@@ -98,12 +98,12 @@ namespace RanchingToolUpgrades
                 rotation: 0f,
                 rotationChange: 0f);
 
-            who.currentLocation.temporarySprites.Add(this.tempSprite);
+            who.currentLocation.temporarySprites.Add(this.TempSprite);
 
             return false;
         }
 
-        protected new List<Vector2> tilesAffected(int power)
+        protected List<Vector2> TilesAffected(int power)
         {
             // We want to get tilesAffected based on the farmers direction, but we want the Farmer to face down for animating
             // so use a fake farmer for this call.
@@ -119,7 +119,7 @@ namespace RanchingToolUpgrades
             {
                 return;
             }
-            foreach (Vector2 v in this.tilesAffected(this.lastUser.toolPower))
+            foreach (Vector2 v in this.TilesAffected(this.lastUser.toolPower))
             {
                 b.Draw(Game1.mouseCursors, Game1.GlobalToLocal(new Vector2((int)v.X * 64, (int)v.Y * 64)), new Rectangle(194, 388, 16, 16), Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0.01f);
             }
@@ -129,7 +129,7 @@ namespace RanchingToolUpgrades
         {
             who.stopJittering();
             who.canReleaseTool = false;
-            who.currentLocation.removeTemporarySpritesWithID(this.tempSprite.id);
+            who.currentLocation.removeTemporarySpritesWithID(this.TempSprite.id);
             ((FarmerSprite)who.Sprite).animateOnce(303, 50f, 4);
         }
 
@@ -157,7 +157,7 @@ namespace RanchingToolUpgrades
             who.stopJittering();
             Game1.recentMultiplayerRandom = new Random((short)Game1.random.Next(-32768, 32768));
 
-            List<Vector2> tileLocations = this.tilesAffected(power);
+            List<Vector2> tileLocations = this.TilesAffected(power);
 
             int minX = int.MaxValue;
             int minY = int.MaxValue;
