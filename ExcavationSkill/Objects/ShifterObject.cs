@@ -14,6 +14,7 @@ using StardewValley.Locations;
 using MoonShared;
 using SpaceCore;
 using System.Reflection;
+using System.Linq;
 
 namespace ExcavationSkill.Objects
 {
@@ -55,13 +56,13 @@ namespace ExcavationSkill.Objects
         public ShifterObject(string arg)
         {
             TileLocation = Vector2.Zero;
-            ParentSheetIndex = 1;
-            name = ModEntry.Instance.I18n.Get("moonslime.excavation.watershifter.name");
+            ParentSheetIndex = 20000;
+            name = ModEntry.Instance.I18n.Get("moonslime.excavation.obj_water_strainer.name");
             CanBeSetDown = true;
             CanBeGrabbed = false;
             IsSpawnedObject = false;
             this.Type = "interactive";
-            this.TileIndexToShow = this.ParentSheetIndex;
+            this.TileIndexToShow = 3;
 
         }
 
@@ -69,7 +70,7 @@ namespace ExcavationSkill.Objects
 
 
 
-        public override string DisplayName { get => ModEntry.Instance.I18n.Get("moonslime.excavation.watershifter.name"); set { } }
+        public override string DisplayName { get => ModEntry.Instance.I18n.Get("moonslime.excavation.obj_water_strainer.name"); set { } }
 
         protected override void initNetFields()
         {
@@ -79,7 +80,7 @@ namespace ExcavationSkill.Objects
 
         public override string getDescription()
         {
-            return ModEntry.Instance.I18n.Get("moonslime.excavation.watershifter.description");
+            return ModEntry.Instance.I18n.Get("moonslime.excavation.obj_water_strainer.description");
         }
 
         public string FillObjectString(string objectString)
@@ -135,7 +136,7 @@ namespace ExcavationSkill.Objects
             }
         }
 
-        public new string Name = ModEntry.Instance.I18n.Get("moonslime.excavation.watershifter.BaseName");
+        public new string Name = ModEntry.Instance.I18n.Get("moonslime.excavation.obj_water_strainer.BaseName");
 
         public void RemoveOverlayTiles(GameLocation location)
         {
@@ -273,7 +274,10 @@ namespace ExcavationSkill.Objects
             return zero;
         }
 
-
+        public override SOBject GetDeconstructorOutput(Item item)
+        {
+            return new SOBject(334, 4);
+        }
 
 
         protected bool CheckLocation(GameLocation location, float tile_x, float tile_y)
@@ -354,7 +358,7 @@ namespace ExcavationSkill.Objects
 
         public override bool checkForAction(Farmer who, bool justCheckingForActivity = false)
         {
-            if (this.TileIndexToShow == 5)
+            if (this.TileIndexToShow == 7)
             {
                 if (justCheckingForActivity)
                 {
@@ -371,7 +375,7 @@ namespace ExcavationSkill.Objects
                 }
 
                 this.readyForHarvest.Value = false;
-                this.TileIndexToShow = 1;
+                this.TileIndexToShow = 3;
                 this.LidFlapping = true;
                 this.LidFlapTimer = 60f;
                 this.Bait.Value = null;
@@ -439,7 +443,7 @@ namespace ExcavationSkill.Objects
                 return;
             }
 
-            this.TileIndexToShow = 5;
+            this.TileIndexToShow = 7;
             this.readyForHarvest.Value = true;
             Random random = new Random((int)Game1.stats.DaysPlayed + (int)Game1.uniqueIDForThisGame / 2 + (int)this.TileLocation.X * 1000 + (int)this.TileLocation.Y);
 
@@ -489,20 +493,20 @@ namespace ExcavationSkill.Objects
                 if (this.LidFlapTimer <= 0f)
                 {
                     this.TileIndexToShow += ((!this.LidClosing) ? 1 : (-1));
-                    if (this.TileIndexToShow >= 4 && !this.LidClosing)
+                    if (this.TileIndexToShow >= 6 && !this.LidClosing)
                     {
                         this.LidClosing = true;
                         this.TileIndexToShow--;
 
                     }
-                    else if (this.TileIndexToShow <= 0 && this.LidClosing)
+                    else if (this.TileIndexToShow <= 2 && this.LidClosing)
                     {
                         this.LidClosing = false;
                         this.TileIndexToShow++;
                         this.LidFlapping = false;
                         if (this.Bait.Value != null)
                         {
-                            this.TileIndexToShow = 4;
+                            this.TileIndexToShow = 6;
                         }
                     }
 
@@ -533,11 +537,11 @@ namespace ExcavationSkill.Objects
         {
             if (this.heldObject.Value != null)
             {
-                this.TileIndexToShow = 5;
+                this.TileIndexToShow = 7;
             }
             else if (this.TileIndexToShow == 0)
             {
-                this.TileIndexToShow = this.ParentSheetIndex;
+                this.TileIndexToShow = 3;
             }
 
             this.YBob = (float)(Math.Sin(Game1.currentGameTime.TotalGameTime.TotalMilliseconds / 500.0 + (double)(x * 64)) * 8.0 + 8.0);
@@ -573,13 +577,13 @@ namespace ExcavationSkill.Objects
         public override void drawWhenHeld(SpriteBatch spriteBatch, Vector2 objectPosition, Farmer f)
         {
 
-            spriteBatch.Draw(ModEntry.Assets.tilesheet, objectPosition, GameLocation.getSourceRectForObject(f.ActiveObject.ParentSheetIndex), Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, Math.Max(0f, (float)(f.getStandingY() + 3) / 10000f));
+            spriteBatch.Draw(ModEntry.Assets.tilesheet, objectPosition, GameLocation.getSourceRectForObject(this.TileIndexToShow), Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, Math.Max(0f, (float)(f.getStandingY() + 3) / 10000f));
             if (f.ActiveObject == null || !f.ActiveObject.Name.Contains("="))
             {
                 return;
             }
 
-            spriteBatch.Draw(ModEntry.Assets.tilesheet, objectPosition + new Vector2(32f, 32f), GameLocation.getSourceRectForObject(f.ActiveObject.ParentSheetIndex), Color.White, 0f, new Vector2(32f, 32f), 4f + Math.Abs(Game1.starCropShimmerPause) / 8f, SpriteEffects.None, Math.Max(0f, (float)(f.getStandingY() + 3) / 10000f));
+            spriteBatch.Draw(ModEntry.Assets.tilesheet, objectPosition + new Vector2(32f, 32f), GameLocation.getSourceRectForObject(this.TileIndexToShow), Color.White, 0f, new Vector2(32f, 32f), 4f + Math.Abs(Game1.starCropShimmerPause) / 8f, SpriteEffects.None, Math.Max(0f, (float)(f.getStandingY() + 3) / 10000f));
             if (!(Math.Abs(Game1.starCropShimmerPause) <= 0.05f) || !(Game1.random.NextDouble() < 0.97))
             {
                 Game1.starCropShimmerPause += 0.04f;
@@ -605,7 +609,7 @@ namespace ExcavationSkill.Objects
 
             Texture2D objectSpriteSheet = ModEntry.Assets.tilesheet;
             Vector2 position = Game1.GlobalToLocal(Game1.viewport, new Vector2(num * 64 + 32, num2 * 64 + 32));
-            Microsoft.Xna.Framework.Rectangle? sourceRectangle = GameLocation.getSourceRectForObject(this.ParentSheetIndex);
+            Microsoft.Xna.Framework.Rectangle? sourceRectangle = GameLocation.getSourceRectForObject(this.TileIndexToShow);
             Color white = Color.White;
             Vector2 origin = new Vector2(8f, 8f);
             _ = scale;
@@ -631,7 +635,7 @@ namespace ExcavationSkill.Objects
                 spriteBatch.Draw(Game1.shadowTexture, location + new Vector2(32f, 48f), Game1.shadowTexture.Bounds, color * 0.5f, 0f, new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y), 3f, SpriteEffects.None, layerDepth - 0.0001f);
             }
 
-            spriteBatch.Draw(ModEntry.Assets.tilesheet, location + new Vector2((int)(32f * scaleSize), (int)(32f * scaleSize)), Game1.getSourceRectForStandardTileSheet(ModEntry.Assets.tilesheet, parentSheetIndex, 16, 16), color * transparency, 0f, new Vector2(8f, 8f) * scaleSize, 4f * scaleSize, SpriteEffects.None, layerDepth);
+            spriteBatch.Draw(ModEntry.Assets.tilesheet, location + new Vector2((int)(32f * scaleSize), (int)(32f * scaleSize)), Game1.getSourceRectForStandardTileSheet(ModEntry.Assets.tilesheet, this.TileIndexToShow, 16, 16), color * transparency, 0f, new Vector2(8f, 8f) * scaleSize, 4f * scaleSize, SpriteEffects.None, layerDepth);
             if (flag)
             {
                 Utility.drawTinyDigits(stack, spriteBatch, location + new Vector2((float)(64 - Utility.getWidthOfTinyDigitString(stack, 3f * scaleSize)) + 3f * scaleSize, 64f - 18f * scaleSize + 1f), 3f * scaleSize, 1f, color);

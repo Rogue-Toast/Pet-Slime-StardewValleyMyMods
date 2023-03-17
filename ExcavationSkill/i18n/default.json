@@ -30,13 +30,6 @@
     "excavation10b1.prestige.description": "While panning, be able to find a lot more additional items.",
     "excavation10b2.prestige.description": "On Successful Panning or Digging an artifact spot, \n Get a speed boost for two minutes.",
 
-    "DO.NOT.CHANGE.THE.BASE.NAME.WHEN.TRANSLATING": null,
-    "moonslime.excavation.watershifter.BaseName": "Shifter",
-    "DO.NOT.CHANGE.THE.BASE.NAME.WHEN.TRANSLATING.": null,
-
-    "moonslime.excavation.watershifter.name": "Water Shifter",
-    "moonslime.excavation.watershifter.description": "Place it in the water, string it with fiber, \nand check the next day to see it has anything. \nWorks in streams, lakes, and the ocean.",
-
 
     "moonslime.excavation.h_display.name": "Hardwood Display",
     "moonslime.excavation.h_display.description": "A display stand made out of hard wood.",
@@ -200,12 +193,41 @@
     "moonslime.excavation.totem_volcano_warp.name": "Dwarf Gadget: Infinite Volcano Simulation",
     "moonslime.excavation.totem_volcano_warp.description": "A device made from your studies of artifacts. Warps you to version of the Volcano that you can climb infinitely. Warning: Bring a warping item to escape.",
 
-
     "moonslime.excavation.grinder.name": "Grinder",
     "moonslime.excavation.grinder.description": "Grindes old rusty artifacts into ore.",
 
+    "moonslime.excavation.ancient_battery.name": "Ancient Battery Production Station",
+    "moonslime.excavation.ancient_battery.description": "Using knowledge gained from studing artifacts, you can make battery packs the old fashion way! Use juice, clay, and time to make them at this station.",
+
     "moonslime.excavation.preservation_chamber.name": "Preservation Chamber",
     "moonslime.excavation.preservation_chamber.description": "Put a display and an artifact on here to make an artifact on display.",
+
+    "DO.NOT.CHANGE.THE.BASE.NAME.WHEN.TRANSLATING": null,
+    "moonslime.excavation.obj_water_strainer.BaseName": "Error Object",
+    "moonslime.excavation.obj_PathsObject.BaseName": "Base Path Object",
+    "moonslime.excavation.obj_PathsObject.description": "If you see this, there is most likely an error.",
+    "DO.NOT.CHANGE.THE.BASE.NAME.WHEN.TRANSLATING.": null,
+
+    "moonslime.excavation.obj_water_strainer.name": "Water Shifter",
+    "moonslime.excavation.obj_water_strainer.description": "Place it in the water, string it with fiber, and check the next day to see it has anything. \nWorks in streams, lakes, and the ocean.",
+
+    "moonslime.excavation.dummy_water_strainer.name": "Water Shifter",
+    "moonslime.excavation.dummy_water_strainer.description": "Place it in the water, string it with fiber, \nand check the next day to see it has anything. \nWorks in streams, lakes, and the ocean.",
+
+    "moonslime.excavation.obj_bone_path.name": "Bone Path",
+    "moonslime.excavation.obj_bone_path.description": "Place on the ground to create paths or to make your floors terrifying.",
+
+    "moonslime.excavation.dummy_path_bone.name": "Bone Path",
+    "moonslime.excavation.dummy_path_bone.description": "Place on the ground to create paths or to make your floors terrifying.",
+
+    "moonslime.excavation.obj_glass_path.name": "Glass Path",
+    "moonslime.excavation.obj_glass_path.description": "Place on the ground to create paths or to spruce up your floors.",
+
+    "moonslime.excavation.dummy_path_glass.name": "Glass Path",
+    "moonslime.excavation.dummy_path_glass.description": "Place on the ground to create paths or to spruce up your floors.",
+
+    "moonslime.excavation.glass_bazier.name": "Glass Bazier",
+    "moonslime.excavation.glass_bazier.description": "Provides a moderate amount of light.",
 
     "moonslime.excavation.glass_fence.name": "Glass Fence",
     "moonslime.excavation.glass_fence.description": "A fragile fence made of glass."

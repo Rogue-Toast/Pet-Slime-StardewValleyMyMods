@@ -52,18 +52,19 @@ namespace ExcavationSkill
 
 
 
+        [AssetProperty("assets/Flooring.png")]
+        public Texture2D Flooring { get; set; }
+        [AssetProperty("assets/Flooring_winter.png")]
+        public Texture2D FlooringWinter { get; set; }
+
+
+
         [AssetProperty("assets/tilesheet.png")]
         public Texture2D tilesheet { get; set; }
 
         [AssetProperty("assets/totem_volcano_warp.png", Priority = AssetLoadPriority.Medium)]
         public Texture2D Totem_volcano_warp { get; set; }
         public string Totem_volcano_warpPath { get; set; }
-
-
-        [AssetProperty("assets/Flooring.png")]
-        public static Texture2D Flooring { get; set; }
-        [AssetProperty("assets/Flooring_winter.png")]
-        public static Texture2D FlooringWinter { get; set; }
 
 
 
@@ -77,6 +78,7 @@ namespace ExcavationSkill
         public static string FencesPackPath { get; private set; } = "assets/FencesPack";
         public static string ObjectsPackPath { get; private set; } = "assets/ObjectsPack";
         public static string PFWPackPath { get; private set; } = "assets/PFWPack";
+        public static string DGAPackPath { get; private set; } = "assets/DGAPack";
 
     }
 }

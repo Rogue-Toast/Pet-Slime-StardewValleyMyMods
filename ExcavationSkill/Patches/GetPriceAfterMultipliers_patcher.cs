@@ -58,8 +58,7 @@ namespace ExcavationSkill
                     {
                         continue;
                     }
-
-                    if (farmer.HasCustomProfession(Excavation_Skill.Excavation10a2) && __instance.name.Contains("moonslime"))
+                    if (farmer.HasCustomProfession(Excavation_Skill.Excavation10a2) && (__instance.name.Contains("moonslime.excavation.h") || __instance.name.Contains("moonslime.excavation.w")))
                     {
                         Log.Trace("Excavation Skill: Player has Antiquary profession, adjusting item price");
                         if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(Excavation_Skill.Excavation10a2))

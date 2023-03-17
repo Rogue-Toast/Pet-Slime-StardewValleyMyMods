@@ -23,5 +23,18 @@
 		"ReadyAnimation": {
 			"RelativeFrameIndex": [1]
 		}
+	},
+	{
+		"ProducerName": "moonslime.excavation.ancient_battery",
+		"AlternateFrameProducing": false,
+		"AlternateFrameWhenReady": false,
+		"DisableBouncingAnimationWhileWorking": false,
+		"ProducingAnimation": {
+			"RelativeFrameIndex": [1],
+			"FrameInterval": 10
+		},
+		"ReadyAnimation": {
+			"RelativeFrameIndex": [1]
+		}
 	}
 ]

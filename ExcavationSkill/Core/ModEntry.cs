@@ -19,6 +19,10 @@ using System.Reflection;
 using StardewValley.Menus;
 using ExcavationSkill.Objects;
 using SpaceShared.APIs;
+using System.Linq;
+using HarmonyLib;
+using Newtonsoft.Json.Linq;
+using StardewValley.Objects;
 
 namespace ExcavationSkill
 {
@@ -44,7 +48,7 @@ namespace ExcavationSkill
 
         internal static IJsonAssetsApi JsonAssets;
         internal static IProducerFrameworkAPI ProducerFramework;
-        internal static IDynamicGameAssetsApi DynamicGameAssets;
+        internal static IDynamicGameAssetsApi DGAAPI;
         internal static IMargo MargoAPI;
         internal static IXPDisplayApi XpAPI;
 
@@ -84,6 +88,10 @@ namespace ExcavationSkill
 
             var sc = Helper.ModRegistry.GetApi<ISpaceCoreApi>("spacechase0.SpaceCore");
             sc.RegisterSerializerType(typeof(ShifterObject));
+            sc.RegisterSerializerType(typeof(PathsObject));
+            sc.RegisterSerializerType(typeof(PathsTerrain));
+
+
         }
 
         private void Event_LoadLate(object sender, OneSecondUpdateTickedEventArgs e)
@@ -143,13 +151,18 @@ namespace ExcavationSkill
 
                     if (DGALoaded)
                    {
-                       DynamicGameAssets = this.Helper.ModRegistry
+                        DGAAPI = this.Helper.ModRegistry
                            .GetApi<IDynamicGameAssetsApi>
                            ("spacechase0.DynamicGameAssets");
-                       if (DynamicGameAssets is null)
-                       {
-                           Log.Error("Can't access the Dynamic Game Assets API. Is the mod installed correctly?");
-                       }
+                        try
+                        {
+                            ///DGAAPI.AddEmbeddedPack(this.ModManifest, Path.Combine(Helper.DirectoryPath, Assets.DGAPackPath));
+                        }
+                        catch {
+
+                            Log.Error("Can't access the Dynamic Game Assets API. Is the mod installed correctly?");
+                        }
+
                    }
 
                     if (MargoLoaded)
@@ -199,7 +212,7 @@ namespace ExcavationSkill
                     new GetPriceAfterMultipliers_patcher(),
                     new VolcanoWarpTotem_patch(),
                     new VolcanoDungeonLevel_patch(),
-                    new PierreShopTest_patch());
+                    new WaterStrainerInception_patch());
 
             }
             catch (Exception e)
@@ -219,7 +232,6 @@ namespace ExcavationSkill
             this.Helper.Events.GameLoop.SaveLoaded += this.GameLoop_SaveLoaded;
             this.Helper.Events.GameLoop.DayStarted += this.GameLoop_DayStarted;
             this.Helper.Events.Display.MenuChanged += this.Display_MenuChanged;
-            this.Helper.Events.GameLoop.DayStarted += this.DayStarted;
         }
 
         private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e)
@@ -248,24 +260,38 @@ namespace ExcavationSkill
                 ProducerFramework.AddContentPack(directory: Path.Combine(Helper.DirectoryPath, Assets.PFWPackPath));
             }
 
-            
+
         }
 
-        private static void SetCraftingField(CraftingRecipe craftingRecipe, string fieldName, object value)
-        {
-            typeof(CraftingRecipe).GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public).SetValue(craftingRecipe, value);
-        }
+
 
         private void GameLoop_DayStarted(object sender, DayStartedEventArgs e)
         {
             // On day load, check just to make sure if people are missing recipes or not.
             // Mainly a safeguard with people installing the mod mid-save.
             Utilities.PopulateMissingRecipes();
+
+            if (Game1.player.HasCustomProfession(Excavation_Skill.Excavation5a))
+            {
+                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(Excavation_Skill.Excavation5a))
+                {
+                    Log.Trace("Excavation skill: Pioneer Priestige extra artifact spots fired");
+                    SpawnDiggingSpots(4);
+                }
+                else
+                {
+                    Log.Trace("Excavation skill: Pioneer extra artifact spots fired");
+                    SpawnDiggingSpots(2);
+                }
+            }
         }
 
         [EventPriority(EventPriority.Low)]
         private void Display_MenuChanged(object sender, MenuChangedEventArgs e)
         {
+
+
+            
             // Add new recipes on level-up for Excevation skill
             if (e.NewMenu is SpaceCore.Interface.SkillLevelUpMenu levelUpMenu1)
             {
@@ -293,23 +319,6 @@ namespace ExcavationSkill
             // Reload our own assets
             ModEntry.ItemDefinitions = Assets.ItemDefinitions;
             ModEntry.ExcavationSkillLevelUpTable = Assets.ExcavationSkillLevelUpRecipes;
-        }
-
-        public void DayStarted(object sender, DayStartedEventArgs e)
-        {
-            if (Game1.player.HasCustomProfession(Excavation_Skill.Excavation5a))
-            {
-                if (ModEntry.MargoLoaded && Game1.player.HasCustomPrestigeProfession(Excavation_Skill.Excavation5a))
-                {
-                    Log.Trace("Excavation skill: Pioneer Priestige extra artifact spots fired");
-                    SpawnDiggingSpots(4);
-                }
-                else
-                {
-                    Log.Trace("Excavation skill: Pioneer extra artifact spots fired");
-                    SpawnDiggingSpots(2);
-                }
-            }
         }
 
         private void SpawnDiggingSpots(int spawn)
