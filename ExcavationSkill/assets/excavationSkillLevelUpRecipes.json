@@ -6,7 +6,7 @@
     "4": [ "moonslime.excavation.dummy_water_strainer" ],
 	"5": [],
     "6": [ "moonslime.excavation.ancient_battery" ],
-	"7": ["moonslime.excavation.h_display"],
+	"7": [ "moonslime.excavation.h_preservation_chamber", "moonslime.excavation.h_display"],
 	"8": ["moonslime.excavation.grinder"],
     "9": [ "moonslime.excavation.totem_volcano_warp" ],
 	"10": []

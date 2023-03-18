@@ -1,5 +1,5 @@
 {
-	"Name": "moonslime.excavation.w_fossilized_ribs",
+	"Name": "moonslime.excavation.h_fossilized_ribs",
 	"Category": "15793",
 	"CategoryTextOverride": "Artifact",
 	"CategoryColorOverride": "116,25,98,255",
@@ -21,6 +21,6 @@
 					"Sonny", "Torts", "Ariah", "Bliss", "Keahi", "Louie", "Pipo", "Yuuma", "Undreya", "Trinnie",
 					"Shiko", "Jade", "Joel", "Gregory", "Sheila", "Kim"]
 	},
-    "TranslationKey": "moonslime.excavation.w_fossilized_ribs"
+    "TranslationKey": "moonslime.excavation.h_fossilized_ribs"
 
 }

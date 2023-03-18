@@ -161,7 +161,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "823",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -179,7 +179,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "824",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -197,7 +197,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "820",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -215,7 +215,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "821",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -233,7 +233,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "822",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -251,7 +251,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "827",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -269,7 +269,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "828",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -287,7 +287,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "825",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -305,7 +305,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "826",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -323,7 +323,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "587",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -341,7 +341,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "117",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -359,7 +359,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "103",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -377,7 +377,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "123",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -395,7 +395,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "114",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -413,7 +413,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "109",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -431,7 +431,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "101",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -449,7 +449,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "119",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -467,7 +467,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "105",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -485,7 +485,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "113",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -503,7 +503,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "100",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -521,7 +521,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "107",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -539,7 +539,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "116",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -557,7 +557,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "122",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -575,7 +575,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "121",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -593,7 +593,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "104",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -611,7 +611,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "118",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -629,7 +629,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "124",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -647,7 +647,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "125",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -665,7 +665,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "586",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -683,7 +683,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "106",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -701,7 +701,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "588",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -719,7 +719,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "120",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -737,7 +737,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "115",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -755,7 +755,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "583",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -773,7 +773,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "579",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -791,7 +791,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "581",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -809,7 +809,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "580",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -827,7 +827,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "584",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -845,7 +845,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "108",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -863,7 +863,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "112",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -881,7 +881,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "111",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -899,7 +899,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "110",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -917,7 +917,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "582",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -935,7 +935,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "585",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -953,7 +953,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "126",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -971,7 +971,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "127",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
@@ -989,7 +989,7 @@
 		"PlacingAnimationOffsetX": -10
 	},
 	{
-		"ProducerName": "moonslime.excavation.preservation_chamber",
+		"ProducerName": "moonslime.excavation.h_preservation_chamber",
 		"InputIdentifier": "589",
 		"InputStack": 1,
 		"FuelIdentifier": "moonslime.excavation.h_display",
