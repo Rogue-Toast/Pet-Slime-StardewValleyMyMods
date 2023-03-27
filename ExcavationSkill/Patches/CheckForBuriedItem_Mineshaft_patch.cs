@@ -117,7 +117,12 @@ namespace ExcavationSkill
                         {
                             bonusLoot2 = true;
                         }
-                        Utilities.ApplyExcavationSkill(Game1.getFarmer(who.UniqueMultiplayerID), bonusLoot2, 8, xLocation, yLocation);
+                        ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), ModEntry.Config.ExperienceFromMinesDigging);
+                        Utilities.ApplySpeedBoost(Game1.getFarmer(who.UniqueMultiplayerID));
+                        if (bonusLoot2)
+                        {
+                            Game1.createRadialDebris(__instance, 8, xLocation, yLocation, Game1.random.Next(1, 5), resource: true);
+                        }
                         ///Custom Code Location
 
 
@@ -167,7 +172,7 @@ namespace ExcavationSkill
                     bonusLoot = true;
                 }
 
-                ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), 10);
+                ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), ModEntry.Config.ExperienceFromMinesDigging);
                 Utilities.ApplySpeedBoost(Game1.getFarmer(who.UniqueMultiplayerID));
                 if (bonusLoot)
                 {
@@ -180,7 +185,7 @@ namespace ExcavationSkill
                 {
                     Game1.createObjectDebris(objectIndex, xLocation, yLocation, who.UniqueMultiplayerID, __instance);
                     //Custom Code Location
-                    ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), 10);
+                    ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), ModEntry.Config.ExperienceFromMinesDigging);
                     //Custom Code Location
                 }
 

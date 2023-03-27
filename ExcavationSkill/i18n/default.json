@@ -6,9 +6,20 @@
     "config.AlternativeSkillPageIcon": "Alternative Skill Icon Page",
     "config.AlternativeSkillPageIcon.tooltip": "Requires restart, change the page icon from a brush and rock to a shovel.",
 
-
     "config.EnablePrestige": "Enable Prestige (requires MARGO)",
-    "config.EnablePrestige.tooltip": "Requires restart: Enables Archaeology to Prestige like other skills",
+    "config.EnablePrestige.tooltip": "Requires restart: Enables Archaeology to Prestige like other skills.",
+
+    "config.ExperienceFromArtifactSpots": "Artifact spot experience gain",
+    "config.ExperienceFromArtifactSpots.tooltip": "Archaeology exp gained from digging specifically in an artifact spot.",
+
+    "config.ExperienceFromMinesDigging": "Mines and Skull Cavern experince gain",
+    "config.ExperienceFromMinesDigging.tooltip": "Archaeology exp gained from digging while in the mines or skull cavern.",
+
+    "config.ExperienceFromBuriedAndPannedItem": "Buired items and panning experince gain",
+    "config.ExperienceFromBuriedAndPannedItem.tooltip": "Archaeology exp gained from digging up random items like clay, and from panning.",
+
+    "config.ExperienceFromWaterShifter": "Water Shifter experince gain",
+    "config.ExperienceFromWaterShifter.tooltip": "Archaeology exp gained from harvesting from a water shifter.",
 
     "excavation5a.name": "Pioneer",
     "excavation5a.desc": "More artifact spots might appear!",
@@ -109,7 +120,14 @@
     "moonslime.excavation.h_strange_doll_yellow.description": "A strange doll on a hardwood stand.",
     "moonslime.excavation.h_trilobite.name": "Hardwood Display: Trilobite Fossil",
     "moonslime.excavation.h_trilobite.description": "A trilobite fossil on a hardwood stand.",
-
+    "moonslime.excavation.h_dwarf_scroll_i.name": "Hardwood Display: Dwarf Scroll I",
+    "moonslime.excavation.h_dwarf_scroll_i.description": "A Dwarf Scroll I on a hardwood stand.",
+    "moonslime.excavation.h_dwarf_scroll_ii.name": "Hardwood Display: Dwarf Scroll II",
+    "moonslime.excavation.h_dwarf_scroll_ii.description": "A Dwarf Scroll II on a hardwood stand.",
+    "moonslime.excavation.h_dwarf_scroll_iii.name": "Hardwood Display: Dwarf Scroll III",
+    "moonslime.excavation.h_dwarf_scroll_iii.description": "A Dwarf Scroll III on a hardwood stand.",
+    "moonslime.excavation.h_dwarf_scroll_iv.name": "Hardwood Display: Dwarf Scroll IV",
+    "moonslime.excavation.h_dwarf_scroll_iv.description": "A Dwarf Scroll IV on a hardwood stand.",
     "moonslime.excavation.h_fossilized_leg.name": "Hardwood Display: Fossilized Leg",
     "moonslime.excavation.h_fossilized_leg.description": "A fossilized leg on a hardwood stand.",
     "moonslime.excavation.h_fossilized_ribs.name": "Hardwood Display: Fossilized Ribs",
@@ -161,6 +179,14 @@
     "moonslime.excavation.w_dwarf_gadget.description": "A dwarf gadget on a wooden stand.",
     "moonslime.excavation.w_dwarvisw_helm.name": "Wooden Display: Dwarvish Helm",
     "moonslime.excavation.w_dwarvisw_helm.description": "A dwarvish helm on a wooden stand.",
+    "moonslime.excavation.w_dwarf_scroll_i.name": "Woooden Display: Dwarf Scroll I",
+    "moonslime.excavation.w_dwarf_scroll_i.description": "A Dwarf Scroll I on a wooden stand.",
+    "moonslime.excavation.w_dwarf_scroll_ii.name": "Woooden Display: Dwarf Scroll II",
+    "moonslime.excavation.w_dwarf_scroll_ii.description": "A Dwarf Scroll II on a wooden stand.",
+    "moonslime.excavation.w_dwarf_scroll_iii.name": "Woooden Display: Dwarf Scroll III",
+    "moonslime.excavation.w_dwarf_scroll_iii.description": "A Dwarf Scroll III on a wooden stand.",
+    "moonslime.excavation.w_dwarf_scroll_iv.name": "Woooden Display: Dwarf Scroll IV",
+    "moonslime.excavation.w_dwarf_scroll_iv.description": "A Dwarf Scroll IV on a wooden stand.",
     "moonslime.excavation.w_elvisw_jewelry.name": "Wooden Display: Elvish Jewelry",
     "moonslime.excavation.w_elvisw_jewelry.description": "Elvish jewelry on a wooden stand.",
     "moonslime.excavation.w_glass_shards.name": "Wooden Display: Glass Shards",
@@ -207,7 +233,6 @@
     "moonslime.excavation.w_strange_doll_yellow.description": "A strange doll on a wooden stand.",
     "moonslime.excavation.w_trilobite.name": "Wooden Display: Trilobite Fossil",
     "moonslime.excavation.w_trilobite.description": "A trilobite fossil on a wooden stand.",
-
     "moonslime.excavation.w_fossilized_leg.name": "Wooden Display: Fossilized Leg",
     "moonslime.excavation.w_fossilized_leg.description": "A fossilized leg on a wooden stand.",
     "moonslime.excavation.w_fossilized_ribs.name": "Wooden Display: Fossilized Ribs",

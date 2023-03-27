@@ -1,4 +1,4 @@
-{
+﻿{
     "Name": "moonslime.excavation.h_preservation_chamber",
     "Price": 100,
     "ProvidesLight": false,
@@ -7,12 +7,16 @@
         "ResultCount": 1,
         "Ingredients": [
             {
-                "Object": "preservation_chamber",
+                "Object": 709,
+                "Count": 15
+            },
+            {
+                "Object": 334,
                 "Count": 1
             },
-			{
-                "Object": 709,
-                "Count": 10
+            {
+                "Object": 725,
+                "Count": 30
             }
         ],
         "CanPurchase": false

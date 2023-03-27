@@ -238,6 +238,18 @@ namespace RanchingToolUpgrades
         }
     }
 
+    [HarmonyPatch(typeof(Farmer), nameof(Farmer.toolPowerIncrease))]
+    class Farmer_ToolPowerIncrease
+    {
+        static void Postfix(Farmer __instance)
+        {
+            if (__instance.CurrentTool is UpgradableShovel)
+            {
+                __instance.FarmerSprite.CurrentFrame = 123;
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(InventoryPage), nameof(InventoryPage.receiveLeftClick))]
     class InventoryPage_ReceiveLeftClick
     {

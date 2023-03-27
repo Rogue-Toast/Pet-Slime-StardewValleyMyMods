@@ -128,7 +128,7 @@ namespace ExcavationSkill
         /// <param name="yLocation">the player's y location</param>
         public static void ApplyExcavationSkill(Farmer who, bool bonusLoot = false, int Object = 0, int xLocation = 0, int yLocation = 0)
         {
-            ModEntry.AddEXP(who, 10);
+            ModEntry.AddEXP(who, ModEntry.Config.ExperienceFromBuriedAndPannedItem);
             Utilities.ApplySpeedBoost(who);
             if (bonusLoot)
             {

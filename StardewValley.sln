@@ -10,7 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{7BB5EFE4
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		common-nospace.targets = common-nospace.targets
-		common-unreleased.targets = common-unreleased.targets
 		common.targets = common.targets
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
@@ -26,12 +25,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadiationTierTools", "Radia
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RanchingToolUpgrades", "RanchingToolUpgrades\RanchingToolUpgrades.csproj", "{574D101F-E561-46B4-95B2-2C8796CA4755}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShovelToolUpgrades", "ShovelToolUpgrades\ShovelToolUpgrades.csproj", "{18D3BEC7-EC79-4D26-A779-C1690F40F81B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F13906D-7E88-45B4-ABBC-617437970163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F13906D-7E88-45B4-ABBC-617437970163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19CEDB88-A912-48DA-B35D-FCE2509E70E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19CEDB88-A912-48DA-B35D-FCE2509E70E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4835048-A339-456F-B0ED-64CFE03C4C29}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{B4835048-A339-456F-B0ED-64CFE03C4C29}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{B4835048-A339-456F-B0ED-64CFE03C4C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -48,6 +53,10 @@ Global
 		{574D101F-E561-46B4-95B2-2C8796CA4755}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{574D101F-E561-46B4-95B2-2C8796CA4755}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{574D101F-E561-46B4-95B2-2C8796CA4755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18D3BEC7-EC79-4D26-A779-C1690F40F81B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18D3BEC7-EC79-4D26-A779-C1690F40F81B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18D3BEC7-EC79-4D26-A779-C1690F40F81B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18D3BEC7-EC79-4D26-A779-C1690F40F81B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

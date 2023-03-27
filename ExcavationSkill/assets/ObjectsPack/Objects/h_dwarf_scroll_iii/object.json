@@ -1,12 +1,12 @@
 ﻿{
-	"Name": "moonslime.excavation.h_amphibian_fossil",
+	"Name": "moonslime.excavation.h_dwarf_scroll_iii",
 	"Category": "15793",
 	"CategoryTextOverride": "Artifact",
 	"CategoryColorOverride": "116,25,98,255",
 	"Edibility": -300,
-	"Price": 800,
+	"Price": 500,
 	"IsColored": false,
-	"Recipe": null,
+    "Recipe": null,
 	"GiftTastes": {
 		"Like": ["Penny", "Dwarf", "Gunthur"],
 		"Neutral": [],
@@ -21,6 +21,5 @@
 					"Sonny", "Torts", "Ariah", "Bliss", "Keahi", "Louie", "Pipo", "Yuuma", "Undreya", "Trinnie",
 					"Shiko", "Jade", "Joel", "Gregory", "Sheila", "Kim"]
 	},
-    "TranslationKey": "moonslime.excavation.h_amphibian_fossil"
-
+    "TranslationKey": "moonslime.excavation.h_dwarf_scroll_iii"
 }

@@ -23,7 +23,7 @@ namespace ExcavationSkill.Objects
     public class ShifterObject : SOBject
     {
         public const int LidFlapTimerInterval = 60;
-
+      
         private float YBob;
 
         [XmlElement("DirectionOffset")]
@@ -360,8 +360,17 @@ namespace ExcavationSkill.Objects
         {
             if (this.TileIndexToShow == 7)
             {
+
                 if (justCheckingForActivity)
                 {
+                    return true;
+                }
+
+                if (this.heldObject.Value == null)
+                {
+                    this.Bait.Value = null;
+                    this.readyForHarvest.Value = false;
+                    this.TileIndexToShow = 3;
                     return true;
                 }
 
@@ -382,7 +391,7 @@ namespace ExcavationSkill.Objects
                 who.animateOnce(279 + who.FacingDirection);
                 who.currentLocation.playSound("fishingRodBend");
                 DelayedAction.playSoundAfterDelay("coin", 500);
-                ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), 2);
+                ModEntry.AddEXP(Game1.getFarmer(who.UniqueMultiplayerID), ModEntry.Config.ExperienceFromWaterShifter);
                 this.Shake = Vector2.Zero;
                 this.ShakeTimer = 0f;
                 return true;

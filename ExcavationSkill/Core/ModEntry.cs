@@ -15,14 +15,9 @@ using IJsonAssetsApi = MoonShared.APIs.IJsonAssetsApi;
 using MoonShared.Patching;
 using ExcavationSkill.Patches;
 using StardewValley.Tools;
-using System.Reflection;
-using StardewValley.Menus;
 using ExcavationSkill.Objects;
 using SpaceShared.APIs;
-using System.Linq;
 using HarmonyLib;
-using Newtonsoft.Json.Linq;
-using StardewValley.Objects;
 
 namespace ExcavationSkill
 {
@@ -37,6 +32,7 @@ namespace ExcavationSkill
         internal static bool DGALoaded => ModEntry.Instance.Helper.ModRegistry.IsLoaded("spacechase0.DynamicGameAssets");
         internal static bool MargoLoaded => ModEntry.Instance.Helper.ModRegistry.IsLoaded("DaLion.Overhaul");
         internal static bool XPDisplayLoaded => ModEntry.Instance.Helper.ModRegistry.IsLoaded("Shockah.XPDisplay");
+        internal static bool ItemSpawnerLoaded => ModEntry.Instance.Helper.ModRegistry.IsLoaded("CJBok.ItemSpawner");
 
 #pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
         private readonly List<Func<Item, (int? SkillIndex, string? SpaceCoreSkillName)?>> ToolSkillMatchers = new()
@@ -52,13 +48,13 @@ namespace ExcavationSkill
         internal static IMargo MargoAPI;
         internal static IXPDisplayApi XpAPI;
 
+
         internal ITranslationHelper I18n => this.Helper.Translation;
         internal static Dictionary<string, List<string>> ItemDefinitions;
         internal static IEnumerable<KeyValuePair<string, List<string>>> ExcavationSkillLevelUpTable;
         public static readonly IList<int> BonusLootTable = new List<int>();
         public static readonly IList<int> ArtifactLootTable = new List<int>();
         public static readonly IList<int> ShifterLootTable = new List<int>();
-        internal const string ObjectPrefix = "moonslime.excavation."; // DO NOT EDIT
 
         
         public override void Entry(IModHelper helper)
@@ -86,7 +82,7 @@ namespace ExcavationSkill
             // delay loading our stuff by just a tiny bit, to make sure other mods load first 
             this.Helper.Events.GameLoop.OneSecondUpdateTicked += this.Event_LoadLate;
 
-            var sc = Helper.ModRegistry.GetApi<ISpaceCoreApi>("spacechase0.SpaceCore");
+            var sc = this.Helper.ModRegistry.GetApi<ISpaceCoreApi>("spacechase0.SpaceCore");
             sc.RegisterSerializerType(typeof(ShifterObject));
             sc.RegisterSerializerType(typeof(PathsObject));
             sc.RegisterSerializerType(typeof(PathsTerrain));
@@ -181,7 +177,7 @@ namespace ExcavationSkill
                             Log.Error("Can't access the MARGO API. Is the mod installed correctly?");
                         }
                     }
-                    
+
                     isLoaded = true;
                 }
             }
@@ -213,6 +209,9 @@ namespace ExcavationSkill
                     new VolcanoWarpTotem_patch(),
                     new VolcanoDungeonLevel_patch(),
                     new WaterStrainerInception_patch());
+
+
+                new Harmony(this.ModManifest.UniqueID).PatchAll();
 
             }
             catch (Exception e)
